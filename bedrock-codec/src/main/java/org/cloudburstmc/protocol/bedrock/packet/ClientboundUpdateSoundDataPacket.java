@@ -3,6 +3,7 @@ package org.cloudburstmc.protocol.bedrock.packet;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+import org.cloudburstmc.protocol.bedrock.data.sound.*;
 
 /**
  * Sent by the server to update the state of a server-controlled sound.
@@ -22,6 +23,13 @@ public class ClientboundUpdateSoundDataPacket implements BedrockPacket {
      * The sound event action to apply to the sound.
      */
     private String type;
+    private FadeSoundData fade;
+    private PauseSoundData pause;
+    private ResumeSoundData resume;
+    private SeekToSoundData seekTo;
+    private SetPitchSoundData pitch;
+    private SetVolumeSoundData volume;
+    private StopSoundData stop;
 
     @Override
     public PacketSignal handle(BedrockPacketHandler handler) {

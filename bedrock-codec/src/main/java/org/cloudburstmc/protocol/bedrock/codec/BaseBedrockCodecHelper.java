@@ -20,6 +20,7 @@ import org.cloudburstmc.nbt.NbtType;
 import org.cloudburstmc.nbt.NbtUtils;
 import org.cloudburstmc.protocol.bedrock.data.EncodingSettings;
 import org.cloudburstmc.protocol.bedrock.data.ExperimentData;
+import org.cloudburstmc.protocol.bedrock.data.GatheringsConfigurationJoinInfo;
 import org.cloudburstmc.protocol.bedrock.data.PlayerAbilityHolder;
 import org.cloudburstmc.protocol.bedrock.data.PresenceConfiguration;
 import org.cloudburstmc.protocol.bedrock.data.definitions.BlockDefinition;
@@ -635,6 +636,16 @@ public abstract class BaseBedrockCodecHelper implements BedrockCodecHelper {
 
     @Override
     public PresenceConfiguration readPresenceConfiguration(ByteBuf buffer) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public void writeGatheringsConfiguration(ByteBuf buffer, BedrockCodecHelper helper, GatheringsConfigurationJoinInfo info) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public GatheringsConfigurationJoinInfo readGatheringsConfiguration(ByteBuf buffer, BedrockCodecHelper helper) {
         throw new UnsupportedOperationException();
     }
 }

@@ -33,6 +33,7 @@ public class PlaySoundPacket implements BedrockPacket {
      * it to specify the pitch as the field is intended.
      */
     private float pitch;
+    private int loopCount;
     /**
      * Optional server-assigned sound handle for long-lived sounds.
      *

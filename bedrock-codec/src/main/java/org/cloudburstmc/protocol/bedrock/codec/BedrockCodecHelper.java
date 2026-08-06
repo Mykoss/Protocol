@@ -265,4 +265,8 @@ public interface BedrockCodecHelper {
     void writePresenceConfiguration(ByteBuf buffer, PresenceConfiguration configuration);
 
     PresenceConfiguration readPresenceConfiguration(ByteBuf buffer);
+
+    void writeGatheringsConfiguration(ByteBuf buffer, BedrockCodecHelper helper, GatheringsConfigurationJoinInfo info);
+
+    GatheringsConfigurationJoinInfo readGatheringsConfiguration(ByteBuf buffer, BedrockCodecHelper helper);
 }

@@ -41,7 +41,7 @@ public class SubChunkData extends AbstractReferenceCounted {
      *
      * @since v475
      */
-    private long blobId;
+    private Long blobId;
     /**
      * The render height map encoding type.
      *

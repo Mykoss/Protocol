@@ -31,6 +31,9 @@ public class PlayerListPacket implements BedrockPacket {
      * The action to execute upon the player list. The entries that follow specify which entries are
      * added or removed from the player list.
      */
+    /**
+     * @deprecated since v2168, action is encoded per entry.
+     */
     private Action action;
 
     @Override
@@ -57,6 +60,10 @@ public class PlayerListPacket implements BedrockPacket {
     @ToString(doNotUseGetters = true)
     @EqualsAndHashCode(doNotUseGetters = true)
     public static final class Entry {
+        /**
+         * Entry action used by protocol v2168 and newer.
+         */
+        private Action action;
         /**
          * The player's UUID as sent during login.
          */

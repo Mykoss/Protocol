@@ -1233,6 +1233,9 @@ public enum SoundEvent {
      * @since v1001
      */
     GEYSER_CONTINUOUS_ERUPTION_ACTIVE("geyser_continuous_eruption_active"),
+    MOUNT("mount"),
+    DISMOUNT("dismount"),
+    STRAW_BED_BREAK_LEAVE("straw_bed.break_leave"),
     UNDEFINED("undefined");
 
     private static final Map<String, SoundEvent> SERIALIZE_NAMES = new HashMap<>(values().length);

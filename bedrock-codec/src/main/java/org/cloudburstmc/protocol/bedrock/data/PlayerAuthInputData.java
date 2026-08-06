@@ -158,4 +158,5 @@ public enum PlayerAuthInputData {
      * @since v766
      */
     SNEAK_CURRENT_RAW,
+    INTERNAL_UPDATE
 }

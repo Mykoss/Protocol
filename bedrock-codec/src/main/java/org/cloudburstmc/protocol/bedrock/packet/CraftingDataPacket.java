@@ -25,6 +25,14 @@ public class CraftingDataPacket implements BedrockPacket {
      * station recipes.
      */
     private final List<RecipeData> craftingData = new ObjectArrayList<>();
+    private final List<ShapedRecipeData> shapedData = new ObjectArrayList<>();
+    private final List<ShapelessRecipeData> shapelessData = new ObjectArrayList<>();
+    private final List<MultiRecipeData> multiData = new ObjectArrayList<>();
+    private final List<ShapelessRecipeData> shapelessUserData = new ObjectArrayList<>();
+    private final List<ShapelessRecipeData> shapelessChemistryData = new ObjectArrayList<>();
+    private final List<ShapedRecipeData> shapedChemistryData = new ObjectArrayList<>();
+    private final List<SmithingTransformRecipeData> smithingTransformData = new ObjectArrayList<>();
+    private final List<SmithingTrimRecipeData> smithingTrimData = new ObjectArrayList<>();
     /**
      * Potion mixing recipes that can be used in a brewing stand.
      */

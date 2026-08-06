@@ -329,4 +329,6 @@ public class EntityDataTypes {
      * @since v975
      */
     public static final EntityDataType<Float> NAMEPLATE_RENDER_DISTANCE_MAX = new EntityDataType<>(Float.class, "NAMEPLATE_RENDER_DISTANCE_MAX");
+    /** @since v2168 */
+    public static final EntityDataType<Integer> UNKNOWN_HORSE_INT_25 = new EntityDataType<>(Integer.class, "UNKNOWN_HORSE_INT_25");
 }

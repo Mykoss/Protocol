@@ -23,9 +23,9 @@ public class SetScoreboardIdentitySerializer_v291 implements BedrockPacketSerial
         SetScoreboardIdentityPacket.Action action = packet.getAction();
         buffer.writeByte(action.ordinal());
         helper.writeArray(buffer, packet.getEntries(), (buf, entry) -> {
-            VarInts.writeLong(buffer, entry.scoreboardId());
+            VarInts.writeLong(buffer, entry.getScoreboardId());
             if (action == Action.ADD) {
-                helper.writeUuid(buffer, entry.uuid());
+                helper.writeUuid(buffer, entry.getUuid());
             }
         });
     }
