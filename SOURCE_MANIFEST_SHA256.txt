@@ -2,7 +2,7 @@
 28fd708fcfef4765c171659bfb1c4a0e275c7dcddbb3b6643aedd401dd008472  ./.github/workflows/gradle.yml
 d8d933ae84ac2baa646d603dc040104e1f464c07b09017b80fb84cf25ff3895a  ./.gitignore
 11c52cd9427fa5092c35697b54f651f839f9edb010932fc926e5b6bd003192a2  ./LICENSE
-91f4cc35d94f33cd34a09063a241a286aba6ec4fee6250aecc307a12bb4b9a9f  ./PORT_STATUS_1_26_40_ES.md
+6ca52727643def70a7c0a3083fbf8b3db7ea4a553fd6257cbbbe936804fb9372  ./PORT_STATUS_1_26_40_ES.md
 8ff56dabd3366193c55d3e5fd1f0273d0e2173556462b6713e3d08b3483db5cb  ./README.md
 45dc967c364091494da7d235f34e168225cf9941dc6f4d65264d0afceb5630b5  ./STATIC_VALIDATION_1_26_40.txt
 b3e304566c98aeeb1ea7da96ce1e5504fda78e9cb642baf143f2787f787587a2  ./UPSTREAM_V2168_COMMITS.txt
@@ -12,7 +12,7 @@ c3a694b65397c38a09ecb72398ec62e755a4b6850f2371292aeb2a3503548ef7  ./bedrock-code
 30f341fa6ddb2323d9edefdab79b39416f06c77025d92c93eb3dffdd810a2d0b  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/annotation/NoEncryption.java
 9ab97fb48b59e62d656c31313f7d443d72993d50ea7c6be81264fedd889a70ba  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/codec/BaseBedrockCodecHelper.java
 d2f717f5343b28d8fc4353fc63c4e2137af524bb33915eb6de2d2edccdd3d8bc  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/codec/BedrockCodec.java
-86073e1bef56c39fbcda46e9b535353b19e883caedc69f5670cfa3985359f0d1  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/codec/BedrockCodecHelper.java
+949a9744c16cdda23f2fce7dfec61f4e5061c70c7034f610ae144f480d6d1540  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/codec/BedrockCodecHelper.java
 2d7cbf2d9d71c4073a469462cb30cd9449652290be8e68fbe22a2564f5ee8197  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/codec/BedrockPacketDefinition.java
 3b62462e1d5836d1751738b2693f5b3160bf49bdf02747026d244cabcdb174bd  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/codec/BedrockPacketFactory.java
 e6ff7b4fb082e40ab6a7ef310f74871fefe4537be0dd943cb92b302255257da0  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/codec/BedrockPacketSerializer.java
@@ -54,12 +54,12 @@ c81c7d8797160d539224c575e7709a3c6e4dfe64f9cc590f8ce63206f9ddcc67  ./bedrock-code
 def3fdd1bbc5e2233f14fbd9055f6a990be567122461ddb347c2368bedf269b1  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/codec/v2168/serializer/CraftingDataSerializer_v2168.java
 d18cd642e96ecec6468e44c61cc71b6d3ba61a2a6613f4f85401bbe53c41d114  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/codec/v2168/serializer/CreativeContentSerializer_v2168.java
 8d02ca147aa9ba0d21c8c02fd77243cb13e40fdff3b7972fae2d345d6c6cd65b  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/codec/v2168/serializer/DimensionDataSerializer_v2168.java
-7535c0deb6235de7daab63202e04cfa600ca7e732722e467e2fcb6f3ed8c7c86  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/codec/v2168/serializer/ItemStackResponseSerializer_v2168.java
+60a0697b2a97b7fc68f70ab0f8bc31b1d7cad05c905c6547c1bc67ea5da0bd4e  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/codec/v2168/serializer/ItemStackResponseSerializer_v2168.java
 5fc5cfcc30b28751f4bfa4268647010098e61d1f6cd1696d323a483c06b16cfc  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/codec/v2168/serializer/LevelChunkSerializer_v2168.java
 e1ff199c4f28c749c97b26595486d15daf838d833cd9c2d5c0402695b588827b  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/codec/v2168/serializer/MoveEntityDeltaSerializer_v2168.java
 5bffe1bff5f53146ca381b4fa587edfb16c20f8292e5ca1c4ec7a2712766d998  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/codec/v2168/serializer/MovePlayerSerializer_v2168.java
 e6c0890d4acd25a5484272b578aa85da8000b7f0a76f0b0c3c33fa0daf2533a4  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/codec/v2168/serializer/PlaySoundSerializer_v2168.java
-8b1e5d63558099e5fa1380bcdba62b4a0f5dc131fcf06a624fdf2072407ffdd1  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/codec/v2168/serializer/PlayerAuthInputSerializer_v2168.java
+e3faf82c6338e322f3654cf66733e20a505d4c38425692c0dc2d4f14af68459a  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/codec/v2168/serializer/PlayerAuthInputSerializer_v2168.java
 262b6f32901d272ce41a00ab271e5851baa33c50cf58decea799166cd3044a5d  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/codec/v2168/serializer/PlayerListSerializer_v2168.java
 880e7ea17453221e219cf49bdf38f9fe1aea129e51c704187c1b90312d5e8826  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/codec/v2168/serializer/PlayerLocationSerializer_v2168.java
 650130a41bfd712d86789f2b6690455aac3860bc21a1e6e0c7d3e8ad8a80b4db  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/codec/v2168/serializer/PlayerSkinSerializer_v2168.java
@@ -247,7 +247,7 @@ ee2a54aca1600d731c4ea5e15cc841660cf0a7eaf3449266eeb191f952a7a3f7  ./bedrock-code
 5cf0368b170a0a9b28107838b432cf29ba20bc52162990edef50795125299cb7  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/codec/v388/BedrockCodecHelper_v388.java
 88bb654b227424887a5524a23206b0e44a8c18d27ef6749eb93fd3ab4590a6c9  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/codec/v388/Bedrock_v388.java
 db036a3c187b9534c715688e0a977b1cc3648ba0aab070622639f160c8726d62  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/codec/v388/serializer/AddPlayerSerializer_v388.java
-99881746cb2424688ad6b50610f317cea430a74340e25936cf2e7a28f6e7b3f6  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/codec/v388/serializer/AnvilDamageSerializer_v388.java
+d525f536d27dfab213ae4a22e30770e5c4a4a912a3a394ead0acd235b6638368  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/codec/v388/serializer/AnvilDamageSerializer_v388.java
 661ed661f0f07152a3b0171fa3585dfdee06736f0324da9b2a07b2ddaeb8764f  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/codec/v388/serializer/AvailableCommandsSerializer_v388.java
 de6180e398d96715278f787efe16b25d790d1bc1b7ba8c52af860d1a08935aab  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/codec/v388/serializer/CompletedUsingItemSerializer_v388.java
 5f167d3abe673f93a26dd4ba8a1fe457ad2e6f9161109ed034c9b0d5819575a2  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/codec/v388/serializer/CraftingDataSerializer_v388.java
@@ -579,7 +579,7 @@ c15bc1055e1f0b470e357623ca8a0f0fd7b46f0c9afb0d3eabf09ab4a506b2d8  ./bedrock-code
 5a63b8e2362cb61c70d2a85768d062f512a9250f55eefca5e04bccf0355fbaf4  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/codec/v800/serializer/CameraPresetsSerializer_v800.java
 c4804eaeb88e69b4653eb4becaf9511db5f2ff3df7f3bb7f60e810613cdf873d  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/codec/v800/serializer/ClientboundControlSchemeSetSerializer_v800.java
 c455af45615b8f28fce94e32e3cb2dea4447407ba8d903ce7ea88815f679723b  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/codec/v800/serializer/PlayerListSerializer_v800.java
-62a74b13700494fa079ef567a1eefa21b83abc92ed6b9dfd8aef1c0e4a1c4fbe  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/codec/v800/serializer/PlayerLocationSerializer_v800.java
+2a4405d43510042c1debe1c162820fe810d8f4ab49181adb2db3b8b11359f5dd  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/codec/v800/serializer/PlayerLocationSerializer_v800.java
 4b274948d83ed19e2d6a3989eb375d7b4e735743853acea5fb75767043c498f2  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/codec/v818/Bedrock_v818.java
 e181353bed097fb214e84c5fc02a6489b5857ba49d2484b27cf090d1d7488f35  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/codec/v818/serializer/CameraInstructionSerializer_v818.java
 d263809af731992d45d7b1346187162bda4418721b0a7b100d467bad7cbfc39f  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/codec/v818/serializer/CameraPresetsSerializer_v818.java
@@ -707,7 +707,7 @@ d82c112a24497b733701d9f36ae6880d271e4c28ba7be5d7ca079fd60056d2d0  ./bedrock-code
 170d22bb5c115afb279c6ddd705976935f6bc0a9791383e2b17018d52c2c7198  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/data/ControlScheme.java
 270cc3edff91e6ca60dd41ae6ff8017a334d729552aee649fe65f7b038f0aca3  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/data/CoordinateEvaluationOrder.java
 0aadf2664520a56eab956e7a41f8b3a70cb2c9f2ac669dc4069e17466efa12d9  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/data/DisconnectFailReason.java
-6a52405ee8cc15a14aaced012113eb2990261aca5749f72637ba6bb8d70d188d  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/data/EduSharedUriResource.java
+e5a1f808f9c616dd5b05f825558bdd0eaa0f6ef205fee1511e3aab91c02a0fbf  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/data/EduSharedUriResource.java
 17cd94dea8c8489a3159d51bd78e9837327c3b439b1cbc6cfda6bac6f1260b3a  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/data/EducationEditionOffer.java
 72ef70967477037abad2be63acca4df46c78e8eff0a4764f60f12c67929dce94  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/data/EmoteFlag.java
 1e2090a2964d83a901eb57af717b796c11acbeb17feb85bf6a3f89ce86916a9d  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/data/EncodingSettings.java
@@ -944,7 +944,7 @@ d72d369c18ca3243722299bf06a8a83f404627385b4dfe4b65803072339bb393  ./bedrock-code
 5b6c8ab95f5ec196383bfdab79b90aa3289130718d654f3123d4c24d935fe619  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/data/inventory/crafting/MaterialReducer.java
 51eaa93feea4aab39b405941e4c015e542eb8bfb77e942425457cd21afd3c213  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/data/inventory/crafting/PotionMixData.java
 8a1770de09782d8a5c091c4718ade133074ed6b1fc9a3e96e47d9eb00d3f2f77  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/data/inventory/crafting/RecipeIngredient.java
-b81743027b6880313765778141d3b83bed79ae60868b83cc69b89227c559d61f  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/data/inventory/crafting/RecipeUnlockingRequirement.java
+4867e056478f4f36926ba030c93dc638de8517ecab92865bc2bdfa268ed181b7  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/data/inventory/crafting/RecipeUnlockingRequirement.java
 4385630f9f37d5938cd34f7d2c59ffee746af6369a079efe26f33653e9962634  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/data/inventory/crafting/recipe/CraftingRecipeData.java
 9bd88bb76347b244be2ee507334b6a8f9ff764b9fee6a7b77a5f77159f370257  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/data/inventory/crafting/recipe/FurnaceRecipeData.java
 e1717aea91d816430f02e59e80065338ef3988ca6175badb4cb4da6273b73d86  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/data/inventory/crafting/recipe/IdentifiableRecipeData.java
@@ -958,7 +958,7 @@ b7e6309ee2441d62df617787be43c02f6b3db9d8aaf7979bbb2b3c40357bf239  ./bedrock-code
 7e8b767ecea750e7ec262bd46a90d7e7f06a71d5750ff6d0a138f9644472d139  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/data/inventory/crafting/recipe/TaggedCraftingData.java
 cb2037257ea62dff0cd35f9fed84ef87b72afa002d72aa05a4093bcdbba6622d  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/data/inventory/crafting/recipe/UniqueCraftingData.java
 631dedef72d52cf1a18e19bec0582cff166341a0793a2f90f622b6a46c590460  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/data/inventory/descriptor/ComplexAliasDescriptor.java
-2be708beef7b0ed54c6fb774378858cf43da6b1ddc5b0617fd0151ace16055d4  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/data/inventory/descriptor/DefaultDescriptor.java
+acc4288ef483a899b7530fd52024c687d93115a2d9ab1c2cb12cfa73c151ef36  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/data/inventory/descriptor/DefaultDescriptor.java
 5e494a084ed218f52c787ef96d39001823322b0ab45761eb285fb4f63ba6066b  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/data/inventory/descriptor/DeferredDescriptor.java
 b0efd7a31d02adacec62714590d95d24de03e8cf4d535bbe447a6d0b9c9b7578  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/data/inventory/descriptor/InvalidDescriptor.java
 63afff32b8a3db1944761bd752d160f6c39b09a166eb758fcdaedfdf9195489e  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/data/inventory/descriptor/ItemDescriptor.java
@@ -991,7 +991,7 @@ b07568eccf770c346d56285932ce3af724eaa70b7a5052e64d523decd7be0365  ./bedrock-code
 2854eab6bf63c5a6f87baa3105226244d1b00089fee47c838b4b0178a2c65cdd  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/data/inventory/itemstack/request/action/SwapAction.java
 5034114b7e67e476aecd5c4570fb20e2260b3fddd3e7fe55bfdeb5115eac00e5  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/data/inventory/itemstack/request/action/TakeAction.java
 69608efc29eb7604a71e2ad61dde511de787fef5d884e774c4f55ff87a444fd1  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/data/inventory/itemstack/request/action/TransferItemStackRequestAction.java
-0fce4956b279f2ed78ebf0361d88c63f4359b546447ae3c4ad11d646dd89ab6b  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/data/inventory/itemstack/response/ItemStackResponse.java
+a91f5d06fbba9e1d5b27782e4035932b180bcd51c866e3d80a1ca9ddf10f2dbf  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/data/inventory/itemstack/response/ItemStackResponse.java
 b7441ff774f09aa44a5fa083eb5b2a2e99848318fd68180e2dca1d58a9b77258  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/data/inventory/itemstack/response/ItemStackResponseContainer.java
 26a2dec93e15a41443117f0be21554b51dd948db735e1e54d7a1d73f318a1dae  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/data/inventory/itemstack/response/ItemStackResponseSlot.java
 c1711471e84dfea93dc4c88ea0b5b8156a716ae47b49381016b6a22d19d63e37  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/data/inventory/itemstack/response/ItemStackResponseStatus.java
@@ -999,7 +999,7 @@ c1711471e84dfea93dc4c88ea0b5b8156a716ae47b49381016b6a22d19d63e37  ./bedrock-code
 9cdb3d9c88afc082f0ea2f5c9b17bca26175ce667f4e061ae67a5eb80043eab1  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/data/inventory/transaction/InventorySource.java
 00a7cdbb5424af336ab126968ac7b5aac8bfa0d0c986c81f96b0c76bec26e1ba  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/data/inventory/transaction/InventoryTransactionType.java
 d32edc88f055357027843bd7eff0304cce00ad04e108f9ecd300157193ac7bbb  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/data/inventory/transaction/ItemUseTransaction.java
-23f8d2ecc298cde3081126b926487076700a44b94d2a0f80cb25425b6b5db0b3  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/data/inventory/transaction/LegacySetItemSlotData.java
+9416d9c86b314309e53b8a9b0a87ecec75218a30b5e057478c849cd36fb59759  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/data/inventory/transaction/LegacySetItemSlotData.java
 06aa2c705b23d5b6b49a5f0955274435f093b382952616031c7fd0dd38a0f333  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/data/map/MapPixel.java
 51f7b00b581f924b278ad31481b16a5fc08578ab2796fb3df4445b2f1d06cf1b  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/data/primitiveshape/PrimitiveArrow.java
 5b71d3b63c136f54fe8ee7b804f199848ef27cbd08e82c738a9b30bbc1b77265  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/data/primitiveshape/PrimitiveBox.java
@@ -1029,16 +1029,16 @@ f146b27705ccfd567849142e3b73a9e736e089d87adb15c329ae1348e31bd085  ./bedrock-code
 e376444b9a30447fdb30516e1a5bc80b27f4eb379c9b498991635f376ca9d374  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/data/sound/StopSoundData.java
 b509c0de0e67637f8a659f22a256b5a3babc48ddce66590882fbb46f377c4edb  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/data/structure/StructureAnimationMode.java
 45bc73f8ce39eb835007e381ea944520b56cd63d5057cc6f0e27496da931487e  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/data/structure/StructureBlockType.java
-d721c38f4b926772cadd6744ad385544f2fcabb31024fb8f606f27f152326e40  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/data/structure/StructureEditorData.java
+7b5cbfa79c2ddd2fa36768f80df49e55d20e98b75f21cba9938d417de25ad2a8  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/data/structure/StructureEditorData.java
 039a0ff4e7147bd00a61366ed32043c82f4134adb15468af2af822ca36fb7758  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/data/structure/StructureMirror.java
 87af4d4a897d71ea2dfc1f49eca8cac0bdb6f4e98ba1e0ebc00ca957898595b8  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/data/structure/StructureRedstoneSaveMode.java
 dcbd76e0740d6837b5a9d8f1097a5b1e13fde3d9b4ee40060e62b289be314c9b  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/data/structure/StructureRotation.java
-7b5ff2ecf932e3f07df5ec5aba43643c9088428d6f772858177045ed365d7939  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/data/structure/StructureSettings.java
+2b47d6d3d31bc62810401a7b1fabc4bf9de1de63fedcd45e2e7eb5cb64422b33  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/data/structure/StructureSettings.java
 abc3d6392d8755cfcde47fe8616ec2f41cae39738dca3aed42592e65ea7429ec  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/data/structure/StructureTemplateRequestOperation.java
 20a06ae2ab89ba753eefa2baed0a8e714cae6596065aebcc73fb595c033a52aa  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/data/structure/StructureTemplateResponseType.java
-e658ded130b86ea93e4db7535608647944e8bea87fe32a88568df7fa20f19c5d  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/definition/Definition.java
+3452ef791b643782fcda1c043164f9782487dd53f6fed5cb34485a3980386c8a  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/definition/Definition.java
 6c90fc3368b6956a1f6042fc0673a90c0c01eafb677fa346df72ffabf3bac206  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/definition/DefinitionRegistry.java
-358703798527d3f501268e05584f6a86be2d8919f561e7173967228d3eb483d2  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/definition/NamedDefinition.java
+2bd0b1c50cfbf1e08ee8e8bf26f089fdd70960b4189f7fe2d7a65372b7436593  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/definition/NamedDefinition.java
 c1247ad485b4ccb96865e1ecd06623f6b449e8ab31a5e93ee09733f733b145e0  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/definition/SimpleDefinitionRegistry.java
 af1d00071eed3def9cfc8cb8eac735c8d204addbc881fc47b235def0a667429a  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/packet/AddBehaviorTreePacket.java
 9ff4869674b9d88de63ab21aa1e8414a5519b69458c6edc1f885005de8f36532  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/packet/AddEntityPacket.java
@@ -1091,7 +1091,7 @@ c3a5f7ccc09fb4a72622c9dce78c00e19d2878e31fc85e7a4a43f69e981c6e47  ./bedrock-code
 197589a6475c65d6442353d43358f346c23bf7bb506c30a2ebe5950368116079  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/packet/ClientboundDataDrivenUIShowScreenPacket.java
 2500526bbed55d939f443794bb10a3e73c33b29c58551031d827d0fde179bef7  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/packet/ClientboundDataStorePacket.java
 0ade36edb09469f0230ec780229f8d50e1e26eca869f8cc25d39cbeb27c2c745  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/packet/ClientboundDebugRendererPacket.java
-9dcc4de6b9e9ad59b1a6fdac33df0e5dc5a1739741edef2f361c602ad9087eeb  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/packet/ClientboundMapItemDataPacket.java
+5c9e35da927b9989d3193b6e74efedf91e7a626250667c89a34a36aa01211555  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/packet/ClientboundMapItemDataPacket.java
 5b7be9d7a3673bc77496669e8bf80f16d08ec742e885a487ece27b2b2f300bba  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/packet/ClientboundTextureShiftPacket.java
 f660c3f9d48856fe219fa6220b0f195ede5b26470c928915677f32f2077743a7  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/packet/ClientboundUpdateSoundDataPacket.java
 ae85b7767031b70618a41255b63d8149604145ce290007eb1b848070528f561e  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/packet/CodeBuilderPacket.java
@@ -1107,7 +1107,7 @@ a7366b710fd0d724ec42621dd7c0546c9571558223a14782421b84266cdd9aee  ./bedrock-code
 68b366dfbe93b18390a822017750ae9ac1c82f05096cc9969a128b68af1ad127  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/packet/ContainerRegistryCleanupPacket.java
 5ea4c46181c8df63590122be0986a9a2ce03887c027c56836c7e2db81dca365b  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/packet/ContainerSetDataPacket.java
 9fb3a1611eb2203142b4a4429b8de88ebab06ed06040cc5ed825484306dfc09b  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/packet/CorrectPlayerMovePredictionPacket.java
-9060de7b43e183dc61a4024cb9602f67df557a36109b862ac4a68bc80d6a920b  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/packet/CraftingDataPacket.java
+3b7558d23605ce288ad3d4f5fde4a89eeef07cf14b8580f9b0993f48f2f054e8  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/packet/CraftingDataPacket.java
 66a2bf2233b5f585366754ac3a778c34633fe0d61e59c8216a1c86afa7770b36  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/packet/CraftingEventPacket.java
 1e1c7ea52b33d0bf1362c836c7df1a3a5e6b639085fdad13172cc6c99a7a130f  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/packet/CreatePhotoPacket.java
 7db0cbf3038f31a1dcb9b8ba41a19b9ca5d81b9571c4967bb1f7a54291f46bd2  ./bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/packet/CreativeContentPacket.java

@@ -10,6 +10,14 @@ import org.cloudburstmc.protocol.bedrock.data.inventory.ItemData;
  * @param auxValue The aux value.
  */
 public record DefaultDescriptor(ItemDefinition itemId, int auxValue) implements ItemDescriptor {
+    public ItemDefinition getItemId() {
+        return itemId;
+    }
+
+    public int getAuxValue() {
+        return auxValue;
+    }
+
     @Override
     public ItemDescriptorType getType() {
         return ItemDescriptorType.DEFAULT;

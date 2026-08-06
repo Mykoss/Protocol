@@ -7,4 +7,11 @@ package org.cloudburstmc.protocol.bedrock.data.inventory.transaction;
  * @param slots       The slot indices within that container.
  */
 public record LegacySetItemSlotData(int containerId, byte[] slots) {
+    public int getContainerId() {
+        return containerId;
+    }
+
+    public byte[] getSlots() {
+        return slots;
+    }
 }

@@ -127,7 +127,7 @@ public class PlayerAuthInputSerializer_v2168 extends PlayerAuthInputSerializer_v
         transaction.setLegacyRequestId(legacyRequestId);
         if (buffer.readBoolean() && legacyRequestId < -1 && (legacyRequestId & 1) == 0) {
             helper.readArray(buffer, transaction.getLegacySlots(), (buf, packetHelper) -> {
-                int containerId = buffer.readUnsignedByte();
+                int containerId = buf.readUnsignedByte();
                 return new LegacySetItemSlotData(containerId, packetHelper.readByteArray(buf, 89));
             });
         }

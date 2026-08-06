@@ -56,3 +56,24 @@ org.allaymc.protocol:bedrock-connection:1.26.40-R1-SNAPSHOT
 ```
 
 Después se actualiza el ZIP de Allay para registrar `Protocol_v2168` y usar este artefacto.
+
+## Fix 1 de compilación
+
+Se corrigieron los imports de `CraftingDataPacket`: las clases `ShapedRecipeData`,
+`ShapelessRecipeData`, `MultiRecipeData`, `SmithingTransformRecipeData` y
+`SmithingTrimRecipeData` existen en el paquete de recetas, pero no estaban importadas.
+
+## Fix 2 de compilación
+
+A partir de `build-log-3.txt` se añadió una capa de compatibilidad entre el código v2168
+portado y la API histórica del fork:
+
+- accesores JavaBean (`getRuntimeId`, `getIdentifier` y getters de varios `record`);
+- métodos de helper para `NetworkItemStackDescriptor` con implementación compatible por defecto;
+- constructores alternativos para `StructureSettings` y `StructureEditorData`;
+- setters de reemplazo para las colecciones finales de `ClientboundMapItemDataPacket`;
+- visibilidad protegida para los serializadores que v2168 extiende;
+- corrección del uso de `buf` dentro de lambdas de inventario.
+
+Este fix está diseñado para resolver los 39 errores reportados por `:bedrock-codec:compileJava`.
+Debe confirmarse ejecutando nuevamente esa tarea en Replit.

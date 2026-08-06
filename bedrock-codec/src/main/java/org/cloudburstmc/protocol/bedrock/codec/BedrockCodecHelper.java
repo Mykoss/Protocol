@@ -118,6 +118,22 @@ public interface BedrockCodecHelper {
 
     void writeItemInstance(ByteBuf buffer, ItemData item);
 
+    /**
+     * Reads the network item-stack descriptor representation. Older protocol versions use the
+     * regular item-instance representation, while newer helpers may override this method.
+     */
+    default ItemData readNetworkItemStackDescriptor(ByteBuf buffer) {
+        return readItemInstance(buffer);
+    }
+
+    /**
+     * Writes the network item-stack descriptor representation. Older protocol versions use the
+     * regular item-instance representation, while newer helpers may override this method.
+     */
+    default void writeNetworkItemStackDescriptor(ByteBuf buffer, ItemData item) {
+        writeItemInstance(buffer, item);
+    }
+
     CommandOriginData readCommandOrigin(ByteBuf buffer);
 
     void writeCommandOrigin(ByteBuf buffer, CommandOriginData commandOrigin);

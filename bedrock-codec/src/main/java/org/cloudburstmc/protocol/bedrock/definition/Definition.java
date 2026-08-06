@@ -11,4 +11,13 @@ public interface Definition {
      * @return runtime id
      */
     int runtimeId();
+
+    /**
+     * JavaBean-style compatibility accessor used by older serializers and downstream forks.
+     *
+     * @return runtime id
+     */
+    default int getRuntimeId() {
+        return runtimeId();
+    }
 }

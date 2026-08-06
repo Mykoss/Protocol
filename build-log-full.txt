@@ -1,0 +1,502 @@
+Initialized native services in: /home/runner/.gradle/native
+Initialized jansi services in: /home/runner/.gradle/native
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.4.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Starting process 'Gradle build daemon'. Working directory: /home/runner/.gradle/daemon/9.4.1 Command: /nix/store/k95pqfzyvrna93hc9a4cg5csl7l4fh0d-openjdk-21.0.7+6/lib/openjdk/bin/java --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.prefs/java.util.prefs=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.prefs/java.util.prefs=ALL-UNNAMED --add-opens=java.base/java.nio.charset=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.xml/javax.xml.namespace=ALL-UNNAMED --add-opens=java.base/java.time=ALL-UNNAMED -XX:MaxMetaspaceSize=384m -XX:+HeapDumpOnOutOfMemoryError -Xms256m -Xmx512m -Dfile.encoding=UTF-8 -Duser.country=US -Duser.language=en -Duser.variant -cp /home/runner/.gradle/wrapper/dists/gradle-9.4.1-bin/arn2x92ynaizyzdaamcbpbhtj/gradle-9.4.1/lib/gradle-daemon-main-9.4.1.jar -javaagent:/home/runner/.gradle/wrapper/dists/gradle-9.4.1-bin/arn2x92ynaizyzdaamcbpbhtj/gradle-9.4.1/lib/agents/gradle-instrumentation-agent-9.4.1.jar org.gradle.launcher.daemon.bootstrap.GradleDaemon 9.4.1
+Successfully started process 'Gradle build daemon'
+An attempt to start the daemon took 1.287 secs.
+The client will now receive all logging from the daemon (pid: 3003). The daemon log file: /home/runner/.gradle/daemon/9.4.1/daemon-3003.out.log
+Daemon will be stopped at the end of the build 
+Using 4 worker leases.
+Operational build model parameters: {cachingModelBuilding=false, configurationCache=false, configurationCacheDisabledReason=null, configurationCacheParallelLoad=false, configurationCacheParallelStore=false, configureOnDemand=false, invalidateCoupledProjects=false, isolatedProjects=false, modelAsProjectDependency=false, modelBuilding=false, parallelModelBuilding=false, parallelProjectConfiguration=false, parallelProjectExecution=true, resilientModelBuilding=false}
+Received JVM installation metadata from '/nix/store/k95pqfzyvrna93hc9a4cg5csl7l4fh0d-openjdk-21.0.7+6/lib/openjdk': {JAVA_HOME=/nix/store/k95pqfzyvrna93hc9a4cg5csl7l4fh0d-openjdk-21.0.7+6/lib/openjdk, JAVA_VERSION=21.0.7, JAVA_VENDOR=N/A, RUNTIME_NAME=OpenJDK Runtime Environment, RUNTIME_VERSION=21.0.7+6-nixos, VM_NAME=OpenJDK 64-Bit Server VM, VM_VERSION=21.0.7+6-nixos, VM_VENDOR=Oracle Corporation, OS_ARCH=amd64}
+Watching the file system is configured to be enabled if available
+Unable to list file systems to check whether they can be watched. Disabling watching. Reason: Could not query file systems: could not open mount file (errno 2: No such file or directory)
+File system watching is inactive
+Starting Build
+Settings evaluated using settings file '/home/runner/workspace/settings.gradle.kts'.
+Using local directory build cache for the root build (location = /home/runner/.gradle/caches/build-cache-1, remove unused entries = after 7 days).
+Projects loaded. Root project using build file '/home/runner/workspace/build.gradle.kts'.
+Included projects: [root project 'protocol', project ':bedrock-codec', project ':bedrock-connection']
+
+> Configure project :
+Evaluating root project 'protocol' using build file '/home/runner/workspace/build.gradle.kts'.
+Resolved plugin [id: 'java-library']
+Resolved plugin [id: 'io.freefair.lombok', version: '9.2.0', apply: false]
+Resolved plugin [id: 'com.vanniktech.maven.publish', version: '0.36.0', apply: false]
+
+> Configure project :bedrock-codec
+Evaluating project ':bedrock-codec' using build file '/home/runner/workspace/bedrock-codec/build.gradle.kts'.
+
+> Configure project :bedrock-connection
+Evaluating project ':bedrock-connection' using build file '/home/runner/workspace/bedrock-connection/build.gradle.kts'.
+All projects evaluated.
+Task name matched 'clean'
+Task name matched 'test'
+Task name matched 'publishToMavenLocal'
+Selected primary task 'clean' from project :
+Selected primary task 'test' from project :
+Selected primary task 'publishToMavenLocal' from project :
+Tasks to be executed: [task ':clean', task ':bedrock-codec:clean', task ':bedrock-connection:clean', task ':compileJava', task ':processResources', task ':classes', task ':compileTestJava', task ':processTestResources', task ':testClasses', task ':test', task ':bedrock-codec:generateEffectiveLombokConfig', task ':bedrock-codec:compileJava', task ':bedrock-codec:processResources', task ':bedrock-codec:classes', task ':bedrock-codec:jar', task ':bedrock-codec:sourcesJar', task ':bedrock-codec:generateTestEffectiveLombokConfig', task ':bedrock-codec:compileTestJava', task ':bedrock-codec:processTestResources', task ':bedrock-codec:testClasses', task ':bedrock-codec:test', task ':bedrock-connection:generateEffectiveLombokConfig', task ':bedrock-connection:compileJava', task ':bedrock-connection:processResources', task ':bedrock-connection:classes', task ':bedrock-connection:jar', task ':bedrock-connection:sourcesJar', task ':bedrock-connection:generateTestEffectiveLombokConfig', task ':bedrock-connection:compileTestJava', task ':bedrock-connection:processTestResources', task ':bedrock-connection:testClasses', task ':bedrock-connection:test', task ':bedrock-codec:generateMetadataFileForMavenPublication', task ':bedrock-codec:generatePomFileForMavenPublication', task ':bedrock-codec:delombok', task ':bedrock-codec:javadoc', task ':bedrock-codec:plainJavadocJar', task ':bedrock-codec:signMavenPublication', task ':bedrock-codec:publishMavenPublicationToMavenLocal', task ':bedrock-codec:publishToMavenLocal', task ':bedrock-connection:generateMetadataFileForMavenPublication', task ':bedrock-connection:generatePomFileForMavenPublication', task ':bedrock-connection:delombok', task ':bedrock-connection:javadoc', task ':bedrock-connection:plainJavadocJar', task ':bedrock-connection:signMavenPublication', task ':bedrock-connection:publishMavenPublicationToMavenLocal', task ':bedrock-connection:publishToMavenLocal']
+Tasks that were excluded: []
+Resolve mutations for :clean (Thread[#54,Execution worker,5,main]) started.
+Resolve mutations for :bedrock-connection:clean (Thread[#56,Execution worker Thread 3,5,main]) started.
+Resolve mutations for :bedrock-codec:clean (Thread[#55,Execution worker Thread 2,5,main]) started.
+:bedrock-codec:clean (Thread[#55,Execution worker Thread 2,5,main]) started.
+:bedrock-connection:clean (Thread[#56,Execution worker Thread 3,5,main]) started.
+:clean (Thread[#54,Execution worker,5,main]) started.
+destroyer locations for task group 0 (Thread[#53,included builds,5,main]) started.
+destroyer locations for task group 1 (Thread[#53,included builds,5,main]) started.
+
+> Task :bedrock-connection:clean UP-TO-DATE
+Caching disabled for task ':bedrock-connection:clean' because:
+  Deletion cannot be cached
+Task ':bedrock-connection:clean' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+Resolve mutations for :bedrock-connection:generateEffectiveLombokConfig (Thread[#56,Execution worker Thread 3,5,main]) started.
+
+> Task :clean
+Caching disabled for task ':clean' because:
+  Deletion cannot be cached
+Task ':clean' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+Resolve mutations for :compileJava (Thread[#54,Execution worker,5,main]) started.
+:bedrock-connection:generateEffectiveLombokConfig (Thread[#56,Execution worker Thread 3,5,main]) started.
+:compileJava (Thread[#54,Execution worker,5,main]) started.
+
+> Task :compileJava NO-SOURCE
+Skipping task ':compileJava' as it has no source files and no previous output files.
+Resolve mutations for :processResources (Thread[#54,Execution worker,5,main]) started.
+:processResources (Thread[#53,included builds,5,main]) started.
+
+> Task :processResources NO-SOURCE
+Skipping task ':processResources' as it has no source files and no previous output files.
+Resolve mutations for :classes (Thread[#53,included builds,5,main]) started.
+:classes (Thread[#53,included builds,5,main]) started.
+
+> Task :classes UP-TO-DATE
+Skipping task ':classes' as it has no actions.
+Resolve mutations for :compileTestJava (Thread[#53,included builds,5,main]) started.
+:compileTestJava (Thread[#53,included builds,5,main]) started.
+
+> Task :compileTestJava NO-SOURCE
+Skipping task ':compileTestJava' as it has no source files and no previous output files.
+
+> Task :bedrock-codec:clean
+Caching disabled for task ':bedrock-codec:clean' because:
+  Deletion cannot be cached
+Task ':bedrock-codec:clean' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+Resolve mutations for :processTestResources (Thread[#54,Execution worker,5,main]) started.
+Resolve mutations for :bedrock-codec:generateEffectiveLombokConfig (Thread[#55,Execution worker Thread 2,5,main]) started.
+:processTestResources (Thread[#54,Execution worker,5,main]) started.
+:bedrock-codec:generateEffectiveLombokConfig (Thread[#55,Execution worker Thread 2,5,main]) started.
+
+> Task :processTestResources NO-SOURCE
+Skipping task ':processTestResources' as it has no source files and no previous output files.
+Resolve mutations for :testClasses (Thread[#54,Execution worker,5,main]) started.
+:testClasses (Thread[#54,Execution worker,5,main]) started.
+
+> Task :testClasses UP-TO-DATE
+Skipping task ':testClasses' as it has no actions.
+Resolve mutations for :test (Thread[#54,Execution worker,5,main]) started.
+:test (Thread[#54,Execution worker,5,main]) started.
+
+> Task :test NO-SOURCE
+Skipping task ':test' as it has no source files and no previous output files.
+
+> Task :bedrock-codec:generateEffectiveLombokConfig FROM-CACHE
+Custom actions are attached to task ':bedrock-codec:generateEffectiveLombokConfig'.
+Build cache key for task ':bedrock-codec:generateEffectiveLombokConfig' is fd03eae8bee2b724e0cd480de41db1f9
+Task ':bedrock-codec:generateEffectiveLombokConfig' is not up-to-date because:
+  Output property 'outputFile' file /home/runner/workspace/bedrock-codec/build/lombok/effective-config/lombok-main.config has been removed.
+Loaded cache entry for task ':bedrock-codec:generateEffectiveLombokConfig' with cache key fd03eae8bee2b724e0cd480de41db1f9
+Resolve mutations for :bedrock-codec:compileJava (Thread[#55,Execution worker Thread 2,5,main]) started.
+
+> Task :bedrock-connection:generateEffectiveLombokConfig FROM-CACHE
+Custom actions are attached to task ':bedrock-connection:generateEffectiveLombokConfig'.
+Build cache key for task ':bedrock-connection:generateEffectiveLombokConfig' is fd03eae8bee2b724e0cd480de41db1f9
+Task ':bedrock-connection:generateEffectiveLombokConfig' is not up-to-date because:
+  Output property 'outputFile' file /home/runner/workspace/bedrock-connection/build/lombok/effective-config/lombok-main.config has been removed.
+Loaded cache entry for task ':bedrock-connection:generateEffectiveLombokConfig' with cache key fd03eae8bee2b724e0cd480de41db1f9
+:bedrock-codec:compileJava (Thread[#55,Execution worker Thread 2,5,main]) started.
+Resolve mutations for :bedrock-connection:processResources (Thread[#56,Execution worker Thread 3,5,main]) started.
+:bedrock-connection:processResources (Thread[#56,Execution worker Thread 3,5,main]) started.
+
+> Task :bedrock-connection:processResources NO-SOURCE
+Skipping task ':bedrock-connection:processResources' as it has no source files and no previous output files.
+Resolve mutations for :bedrock-connection:sourcesJar (Thread[#53,included builds,5,main]) started.
+:bedrock-connection:sourcesJar (Thread[#53,included builds,5,main]) started.
+
+> Task :bedrock-connection:sourcesJar
+Caching disabled for task ':bedrock-connection:sourcesJar' because:
+  Not worth caching
+Task ':bedrock-connection:sourcesJar' is not up-to-date because:
+  Output property 'archiveFile' file /home/runner/workspace/bedrock-connection/build/libs/bedrock-connection-1.26.40-R1-SNAPSHOT-sources.jar has been removed.
+file or directory '/home/runner/workspace/bedrock-connection/src/main/resources', not found
+Resolve mutations for :bedrock-connection:generateTestEffectiveLombokConfig (Thread[#56,Execution worker Thread 3,5,main]) started.
+:bedrock-connection:generateTestEffectiveLombokConfig (Thread[#53,included builds,5,main]) started.
+
+> Task :bedrock-connection:generateTestEffectiveLombokConfig FROM-CACHE
+Custom actions are attached to task ':bedrock-connection:generateTestEffectiveLombokConfig'.
+Build cache key for task ':bedrock-connection:generateTestEffectiveLombokConfig' is cbbae5d5500e5cd3bd3adb197b08eba1
+Task ':bedrock-connection:generateTestEffectiveLombokConfig' is not up-to-date because:
+  Output property 'outputFile' file /home/runner/workspace/bedrock-connection/build/lombok/effective-config/lombok-test.config has been removed.
+Loaded cache entry for task ':bedrock-connection:generateTestEffectiveLombokConfig' with cache key cbbae5d5500e5cd3bd3adb197b08eba1
+Resolve mutations for :bedrock-connection:processTestResources (Thread[#56,Execution worker Thread 3,5,main]) started.
+:bedrock-connection:processTestResources (Thread[#56,Execution worker Thread 3,5,main]) started.
+
+> Task :bedrock-connection:processTestResources NO-SOURCE
+Skipping task ':bedrock-connection:processTestResources' as it has no source files and no previous output files.
+Resolve mutations for :bedrock-connection:generatePomFileForMavenPublication (Thread[#53,included builds,5,main]) started.
+:bedrock-connection:generatePomFileForMavenPublication (Thread[#53,included builds,5,main]) started.
+
+> Task :bedrock-codec:compileJava FROM-CACHE
+Build cache key for task ':bedrock-codec:compileJava' is d01709ad4cc5d6903c029d6ae2ba64a5
+Task ':bedrock-codec:compileJava' is not up-to-date because:
+  Output property 'destinationDirectory' file /home/runner/workspace/bedrock-codec/build/classes/java/main has been removed.
+  Output property 'destinationDirectory' file /home/runner/workspace/bedrock-codec/build/classes/java/main/org has been removed.
+  Output property 'destinationDirectory' file /home/runner/workspace/bedrock-codec/build/classes/java/main/org/cloudburstmc has been removed.
+  and more...
+Loaded cache entry for task ':bedrock-codec:compileJava' with cache key d01709ad4cc5d6903c029d6ae2ba64a5
+No compile result for :bedrock-codec:compileJava
+work action resolve main (project :bedrock-codec) (Thread[#55,Execution worker Thread 2,5,main]) started.
+Resolve mutations for :bedrock-codec:processResources (Thread[#55,Execution worker Thread 2,5,main]) started.
+:bedrock-codec:processResources (Thread[#55,Execution worker Thread 2,5,main]) started.
+
+> Task :bedrock-codec:processResources NO-SOURCE
+Skipping task ':bedrock-codec:processResources' as it has no source files and no previous output files.
+Resolve mutations for :bedrock-codec:classes (Thread[#54,Execution worker,5,main]) started.
+:bedrock-codec:classes (Thread[#54,Execution worker,5,main]) started.
+
+> Task :bedrock-codec:classes UP-TO-DATE
+Skipping task ':bedrock-codec:classes' as it has no actions.
+Resolve mutations for :bedrock-codec:jar (Thread[#54,Execution worker,5,main]) started.
+:bedrock-codec:jar (Thread[#54,Execution worker,5,main]) started.
+
+> Task :bedrock-connection:generatePomFileForMavenPublication
+Caching disabled for task ':bedrock-connection:generatePomFileForMavenPublication' because:
+  Task is untracked because: Gradle doesn't understand the data structures used to configure this task
+Task ':bedrock-connection:generatePomFileForMavenPublication' is not up-to-date because:
+  Task is untracked because: Gradle doesn't understand the data structures used to configure this task
+Resolve mutations for :bedrock-connection:compileJava (Thread[#56,Execution worker Thread 3,5,main]) started.
+:bedrock-connection:compileJava (Thread[#53,included builds,5,main]) started.
+
+> Task :bedrock-codec:jar
+Caching disabled for task ':bedrock-codec:jar' because:
+  Not worth caching
+Task ':bedrock-codec:jar' is not up-to-date because:
+  No history is available.
+file or directory '/home/runner/workspace/bedrock-codec/build/resources/main', not found
+work action resolve bedrock-codec-1.26.40-R1-SNAPSHOT.jar (project :bedrock-codec) (Thread[#54,Execution worker,5,main]) started.
+Resolve mutations for :bedrock-codec:sourcesJar (Thread[#54,Execution worker,5,main]) started.
+:bedrock-codec:sourcesJar (Thread[#54,Execution worker,5,main]) started.
+
+> Task :bedrock-codec:sourcesJar
+Caching disabled for task ':bedrock-codec:sourcesJar' because:
+  Not worth caching
+Task ':bedrock-codec:sourcesJar' is not up-to-date because:
+  Output property 'archiveFile' file /home/runner/workspace/bedrock-codec/build/libs/bedrock-codec-1.26.40-R1-SNAPSHOT-sources.jar has been removed.
+file or directory '/home/runner/workspace/bedrock-codec/src/main/resources', not found
+Resolve mutations for :bedrock-codec:generateTestEffectiveLombokConfig (Thread[#54,Execution worker,5,main]) started.
+:bedrock-codec:generateTestEffectiveLombokConfig (Thread[#54,Execution worker,5,main]) started.
+
+> Task :bedrock-codec:generateTestEffectiveLombokConfig FROM-CACHE
+Custom actions are attached to task ':bedrock-codec:generateTestEffectiveLombokConfig'.
+Build cache key for task ':bedrock-codec:generateTestEffectiveLombokConfig' is cbbae5d5500e5cd3bd3adb197b08eba1
+Task ':bedrock-codec:generateTestEffectiveLombokConfig' is not up-to-date because:
+  Output property 'outputFile' file /home/runner/workspace/bedrock-codec/build/lombok/effective-config/lombok-test.config has been removed.
+Loaded cache entry for task ':bedrock-codec:generateTestEffectiveLombokConfig' with cache key cbbae5d5500e5cd3bd3adb197b08eba1
+Resolve mutations for :bedrock-codec:compileTestJava (Thread[#54,Execution worker,5,main]) started.
+:bedrock-codec:compileTestJava (Thread[#54,Execution worker,5,main]) started.
+
+> Task :bedrock-connection:compileJava
+Resource missing. [HTTP GET: https://repo.maven.apache.org/maven2/org/cloudburstmc/netty/netty-transport-raknet/1.0.0.CR3-SNAPSHOT/netty-transport-raknet-1.0.0.CR3-20260421.213623-35.pom]
+Downloading https://repo.maven.apache.org/maven2/io/airlift/aircompressor/0.27/aircompressor-0.27.pom to /home/runner/.gradle/.tmp/gradle_download8336637377263105047bin
+Downloading https://repo.maven.apache.org/maven2/io/airlift/airbase/112/airbase-112.pom to /home/runner/.gradle/.tmp/gradle_download2952354624360698979bin
+Downloading https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.8.0-M1/junit-bom-5.8.0-M1.pom to /home/runner/.gradle/.tmp/gradle_download9526771421987513322bin
+Downloading https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.8.0-M1/junit-bom-5.8.0-M1.module to /home/runner/.gradle/.tmp/gradle_download4493489023020562720bin
+Resource missing. [HTTP GET: https://repo.opencollab.dev/maven-releases/org/cloudburstmc/netty/netty-transport-raknet/1.0.0.CR3-SNAPSHOT/netty-transport-raknet-1.0.0.CR3-20260421.213623-35.pom]
+Downloading https://repo.opencollab.dev/maven-snapshots/org/cloudburstmc/netty/netty-transport-raknet/1.0.0.CR3-SNAPSHOT/netty-transport-raknet-1.0.0.CR3-20260421.213623-35.pom to /home/runner/.gradle/.tmp/gradle_download9020862542103039844bin
+Downloading https://repo.opencollab.dev/maven-snapshots/org/cloudburstmc/netty/netty-transport-raknet/1.0.0.CR3-SNAPSHOT/netty-transport-raknet-1.0.0.CR3-20260421.213623-35.module to /home/runner/.gradle/.tmp/gradle_download16587939950741254601bin
+Downloading https://repo.maven.apache.org/maven2/io/netty/netty-transport/4.1.101.Final/netty-transport-4.1.101.Final.pom to /home/runner/.gradle/.tmp/gradle_download8885161250217912497bin
+Downloading https://repo.maven.apache.org/maven2/net/jodah/expiringmap/0.5.10/expiringmap-0.5.10.pom to /home/runner/.gradle/.tmp/gradle_download5001006570900188322bin
+Downloading https://repo.maven.apache.org/maven2/io/netty/netty-codec/4.1.101.Final/netty-codec-4.1.101.Final.pom to /home/runner/.gradle/.tmp/gradle_download10987891898057754757bin
+Downloading https://repo.maven.apache.org/maven2/io/netty/netty-transport-native-unix-common/4.1.101.Final/netty-transport-native-unix-common-4.1.101.Final.pom to /home/runner/.gradle/.tmp/gradle_download16968564675203483566bin
+Downloading https://repo.maven.apache.org/maven2/org/sonatype/oss/oss-parent/7/oss-parent-7.pom to /home/runner/.gradle/.tmp/gradle_download11596950070448128469bin
+Downloading https://repo.maven.apache.org/maven2/io/netty/netty-resolver/4.1.101.Final/netty-resolver-4.1.101.Final.pom to /home/runner/.gradle/.tmp/gradle_download18000587395923565266bin
+Downloading https://repo.maven.apache.org/maven2/io/netty/netty-codec/4.1.101.Final/netty-codec-4.1.101.Final.jar to /home/runner/.gradle/.tmp/gradle_download3570817886857412538bin
+Downloading https://repo.opencollab.dev/maven-snapshots/org/cloudburstmc/netty/netty-transport-raknet/1.0.0.CR3-SNAPSHOT/netty-transport-raknet-1.0.0.CR3-20260421.213623-35.jar to /home/runner/.gradle/.tmp/gradle_download12507731406767972018bin
+Downloading https://repo.maven.apache.org/maven2/io/airlift/aircompressor/0.27/aircompressor-0.27.jar to /home/runner/.gradle/.tmp/gradle_download13197892064611280928bin
+Downloading https://repo.maven.apache.org/maven2/io/netty/netty-transport/4.1.101.Final/netty-transport-4.1.101.Final.jar to /home/runner/.gradle/.tmp/gradle_download11710668029944932370bin
+Downloading https://repo.maven.apache.org/maven2/io/netty/netty-resolver/4.1.101.Final/netty-resolver-4.1.101.Final.jar to /home/runner/.gradle/.tmp/gradle_download1166422920187368683bin
+Downloading https://repo.maven.apache.org/maven2/net/jodah/expiringmap/0.5.10/expiringmap-0.5.10.jar to /home/runner/.gradle/.tmp/gradle_download8659632088515176444bin
+Downloading https://repo.maven.apache.org/maven2/io/netty/netty-transport-native-unix-common/4.1.101.Final/netty-transport-native-unix-common-4.1.101.Final.jar to /home/runner/.gradle/.tmp/gradle_download2106172878086598378bin
+Build cache key for task ':bedrock-connection:compileJava' is e77434ba2c19fa62c2f9727874b738d2
+Task ':bedrock-connection:compileJava' is not up-to-date because:
+  No history is available.
+The input changes require a full rebuild for incremental task ':bedrock-connection:compileJava'.
+Compilation mode: in-process compilation
+Full recompilation is required because no incremental change information is available. This is usually caused by clean builds or changing compiler arguments.
+Compiling with toolchain '/nix/store/k95pqfzyvrna93hc9a4cg5csl7l4fh0d-openjdk-21.0.7+6/lib/openjdk'.
+Compiling with JDK Java compiler API.
+
+> Task :bedrock-codec:compileTestJava
+Downloading https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter/5.9.2/junit-jupiter-5.9.2.pom to /home/runner/.gradle/.tmp/gradle_download14849470970959090438bin
+Downloading https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.9.2/junit-bom-5.9.2.pom to /home/runner/.gradle/.tmp/gradle_download9904187618337295164bin
+Downloading https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.9.2/junit-bom-5.9.2.module to /home/runner/.gradle/.tmp/gradle_download9882801545217953679bin
+Downloading https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter/5.9.2/junit-jupiter-5.9.2.module to /home/runner/.gradle/.tmp/gradle_download16660830780153368985bin
+Downloading https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-params/5.9.2/junit-jupiter-params-5.9.2.pom to /home/runner/.gradle/.tmp/gradle_download18168729366529866656bin
+Downloading https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-api/5.9.2/junit-jupiter-api-5.9.2.pom to /home/runner/.gradle/.tmp/gradle_download15966653089807073386bin
+Downloading https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-params/5.9.2/junit-jupiter-params-5.9.2.module to /home/runner/.gradle/.tmp/gradle_download5019535349569243814bin
+Downloading https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-api/5.9.2/junit-jupiter-api-5.9.2.module to /home/runner/.gradle/.tmp/gradle_download7309546319574799345bin
+Downloading https://repo.maven.apache.org/maven2/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.pom to /home/runner/.gradle/.tmp/gradle_download9580271777784301976bin
+Downloading https://repo.maven.apache.org/maven2/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.pom to /home/runner/.gradle/.tmp/gradle_download8798286017673757259bin
+Downloading https://repo.maven.apache.org/maven2/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.module to /home/runner/.gradle/.tmp/gradle_download8305009674487269018bin
+Downloading https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.9.2/junit-platform-commons-1.9.2.pom to /home/runner/.gradle/.tmp/gradle_download2771860604432474407bin
+Downloading https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.9.2/junit-platform-commons-1.9.2.module to /home/runner/.gradle/.tmp/gradle_download16471692225212570933bin
+Downloading https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-api/5.9.2/junit-jupiter-api-5.9.2.jar to /home/runner/.gradle/.tmp/gradle_download15163237901824594527bin
+Downloading https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.9.2/junit-platform-commons-1.9.2.jar to /home/runner/.gradle/.tmp/gradle_download1319902330972121705bin
+Downloading https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-params/5.9.2/junit-jupiter-params-5.9.2.jar to /home/runner/.gradle/.tmp/gradle_download15446567846501844579bin
+Downloading https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter/5.9.2/junit-jupiter-5.9.2.jar to /home/runner/.gradle/.tmp/gradle_download7181590221852650066bin
+Downloading https://repo.maven.apache.org/maven2/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar to /home/runner/.gradle/.tmp/gradle_download14965326224027531607bin
+Downloading https://repo.maven.apache.org/maven2/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar to /home/runner/.gradle/.tmp/gradle_download1617590946394692257bin
+Build cache key for task ':bedrock-codec:compileTestJava' is c58e730d17d8b7dd46005f5f4d9b407a
+Task ':bedrock-codec:compileTestJava' is not up-to-date because:
+  No history is available.
+The input changes require a full rebuild for incremental task ':bedrock-codec:compileTestJava'.
+Compilation mode: in-process compilation
+Full recompilation is required because no incremental change information is available. This is usually caused by clean builds or changing compiler arguments.
+Compiling with toolchain '/nix/store/k95pqfzyvrna93hc9a4cg5csl7l4fh0d-openjdk-21.0.7+6/lib/openjdk'.
+Compiling with JDK Java compiler API.
+Note: /home/runner/workspace/bedrock-codec/src/test/java/org/cloudburstmc/protocol/bedrock/FlagSerializationTest.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+Class dependency analysis for incremental compilation took 0.018 secs.
+Created classpath snapshot for incremental compilation in 1.032 secs.
+Stored cache entry for task ':bedrock-codec:compileTestJava' with cache key c58e730d17d8b7dd46005f5f4d9b407a
+Resolve mutations for :bedrock-codec:processTestResources (Thread[#55,Execution worker Thread 2,5,main]) started.
+:bedrock-codec:processTestResources (Thread[#55,Execution worker Thread 2,5,main]) started.
+
+> Task :bedrock-codec:processTestResources NO-SOURCE
+Skipping task ':bedrock-codec:processTestResources' as it has no source files and no previous output files.
+Resolve mutations for :bedrock-codec:testClasses (Thread[#55,Execution worker Thread 2,5,main]) started.
+:bedrock-codec:testClasses (Thread[#55,Execution worker Thread 2,5,main]) started.
+
+> Task :bedrock-codec:testClasses
+Skipping task ':bedrock-codec:testClasses' as it has no actions.
+Resolve mutations for :bedrock-codec:test (Thread[#55,Execution worker Thread 2,5,main]) started.
+:bedrock-codec:test (Thread[#55,Execution worker Thread 2,5,main]) started.
+
+> Task :bedrock-connection:compileJava
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: /home/runner/workspace/bedrock-connection/src/main/java/org/cloudburstmc/protocol/bedrock/util/EncryptionUtils.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+Class dependency analysis for incremental compilation took 0.045 secs.
+Created classpath snapshot for incremental compilation in 0.461 secs.
+Stored cache entry for task ':bedrock-connection:compileJava' with cache key e77434ba2c19fa62c2f9727874b738d2
+Resolve mutations for :bedrock-connection:classes (Thread[#54,Execution worker,5,main]) started.
+:bedrock-connection:classes (Thread[#54,Execution worker,5,main]) started.
+
+> Task :bedrock-connection:classes
+Skipping task ':bedrock-connection:classes' as it has no actions.
+Resolve mutations for :bedrock-connection:jar (Thread[#54,Execution worker,5,main]) started.
+:bedrock-connection:jar (Thread[#54,Execution worker,5,main]) started.
+
+> Task :bedrock-connection:jar
+Caching disabled for task ':bedrock-connection:jar' because:
+  Not worth caching
+Task ':bedrock-connection:jar' is not up-to-date because:
+  No history is available.
+file or directory '/home/runner/workspace/bedrock-connection/build/resources/main', not found
+Resolve mutations for :bedrock-connection:compileTestJava (Thread[#54,Execution worker,5,main]) started.
+:bedrock-connection:compileTestJava (Thread[#54,Execution worker,5,main]) started.
+
+> Task :bedrock-connection:compileTestJava NO-SOURCE
+Skipping task ':bedrock-connection:compileTestJava' as it has no source files and no previous output files.
+Resolve mutations for :bedrock-connection:testClasses (Thread[#54,Execution worker,5,main]) started.
+:bedrock-connection:testClasses (Thread[#54,Execution worker,5,main]) started.
+
+> Task :bedrock-connection:testClasses UP-TO-DATE
+Skipping task ':bedrock-connection:testClasses' as it has no actions.
+Resolve mutations for :bedrock-connection:test (Thread[#54,Execution worker,5,main]) started.
+:bedrock-connection:test (Thread[#54,Execution worker,5,main]) started.
+
+> Task :bedrock-connection:test NO-SOURCE
+Skipping task ':bedrock-connection:test' as it has no source files and no previous output files.
+Resolve mutations for :bedrock-connection:generateMetadataFileForMavenPublication (Thread[#54,Execution worker,5,main]) started.
+:bedrock-connection:generateMetadataFileForMavenPublication (Thread[#54,Execution worker,5,main]) started.
+
+> Task :bedrock-connection:generateMetadataFileForMavenPublication
+Caching disabled for task ':bedrock-connection:generateMetadataFileForMavenPublication' because:
+  Not made cacheable, yet
+Task ':bedrock-connection:generateMetadataFileForMavenPublication' is not up-to-date because:
+  Task.upToDateWhen is false.
+Resolve mutations for :bedrock-connection:delombok (Thread[#53,included builds,5,main]) started.
+:bedrock-connection:delombok (Thread[#53,included builds,5,main]) started.
+
+> Task :bedrock-codec:test
+Downloading https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.9.2/junit-platform-launcher-1.9.2.pom to /home/runner/.gradle/.tmp/gradle_download415145531827986091bin
+Downloading https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.9.2/junit-platform-launcher-1.9.2.module to /home/runner/.gradle/.tmp/gradle_download4180744655368241245bin
+Downloading https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-engine/5.9.2/junit-jupiter-engine-5.9.2.pom to /home/runner/.gradle/.tmp/gradle_download3604815151470179909bin
+Downloading https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-engine/5.9.2/junit-jupiter-engine-5.9.2.module to /home/runner/.gradle/.tmp/gradle_download11284106577022532412bin
+Downloading https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.9.2/junit-platform-engine-1.9.2.pom to /home/runner/.gradle/.tmp/gradle_download14223871155663206948bin
+Downloading https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.9.2/junit-platform-engine-1.9.2.module to /home/runner/.gradle/.tmp/gradle_download17804946675377980387bin
+Downloading https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.9.2/junit-platform-launcher-1.9.2.jar to /home/runner/.gradle/.tmp/gradle_download4687647014585124152bin
+Downloading https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.9.2/junit-platform-engine-1.9.2.jar to /home/runner/.gradle/.tmp/gradle_download8942019749983789792bin
+Downloading https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-engine/5.9.2/junit-jupiter-engine-5.9.2.jar to /home/runner/.gradle/.tmp/gradle_download1028838094937248240bin
+Build cache key for task ':bedrock-codec:test' is 2bbff04ad789451c15b39c928313511b
+Task ':bedrock-codec:test' is not up-to-date because:
+  No history is available.
+Starting process 'Gradle Test Executor 1'. Working directory: /home/runner/workspace/bedrock-codec Command: /nix/store/k95pqfzyvrna93hc9a4cg5csl7l4fh0d-openjdk-21.0.7+6/lib/openjdk/bin/java -Dorg.gradle.internal.worker.tmpdir=/home/runner/workspace/bedrock-codec/build/tmp/test/work @/home/runner/.gradle/.tmp/gradle-worker-classpath10591974509163933266txt -Xmx512m -Dfile.encoding=UTF-8 -Duser.country=US -Duser.language=en -Duser.variant -ea worker.org.gradle.process.internal.worker.GradleWorkerMain 'Gradle Test Executor 1'
+Successfully started process 'Gradle Test Executor 1'
+
+Gradle Test Executor 1 started executing tests.
+
+> Task :bedrock-connection:delombok
+Build cache key for task ':bedrock-connection:delombok' is 402b12d55bdfd2c042a477e7fd4d1f27
+Task ':bedrock-connection:delombok' is not up-to-date because:
+  No history is available.
+Starting process 'command '/nix/store/k95pqfzyvrna93hc9a4cg5csl7l4fh0d-openjdk-21.0.7+6/lib/openjdk/bin/java''. Working directory: /home/runner/workspace/bedrock-connection Command: /nix/store/k95pqfzyvrna93hc9a4cg5csl7l4fh0d-openjdk-21.0.7+6/lib/openjdk/bin/java -Dfile.encoding=UTF-8 -Duser.country=US -Duser.language=en -Duser.variant -cp /home/runner/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.42/8365263844ebb62398e0dc33057ba10ba472d3b8/lombok-1.18.42.jar lombok.launch.Main delombok @/home/runner/workspace/bedrock-connection/build/tmp/delombok/delombok.options /home/runner/workspace/bedrock-connection/src/main/java
+Successfully started process 'command '/nix/store/k95pqfzyvrna93hc9a4cg5csl7l4fh0d-openjdk-21.0.7+6/lib/openjdk/bin/java''
+
+Gradle Test Executor 1 finished executing tests.
+
+> Task :bedrock-codec:test
+
+FlagSerializationTest STANDARD_ERROR
+    SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+    SLF4J: Defaulting to no-operation (NOP) logger implementation
+    SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+Generating HTML test report...
+Finished generating test html results (0.087 secs) into: /home/runner/workspace/bedrock-codec/build/reports/tests/test
+Finished generating test XML results (0.034 secs) into: /home/runner/workspace/bedrock-codec/build/test-results/test
+Stored cache entry for task ':bedrock-codec:test' with cache key 2bbff04ad789451c15b39c928313511b
+Resolve mutations for :bedrock-codec:generateMetadataFileForMavenPublication (Thread[#54,Execution worker,5,main]) started.
+:bedrock-codec:generateMetadataFileForMavenPublication (Thread[#54,Execution worker,5,main]) started.
+
+> Task :bedrock-codec:generateMetadataFileForMavenPublication
+Caching disabled for task ':bedrock-codec:generateMetadataFileForMavenPublication' because:
+  Not made cacheable, yet
+Task ':bedrock-codec:generateMetadataFileForMavenPublication' is not up-to-date because:
+  Task.upToDateWhen is false.
+Resolve mutations for :bedrock-codec:generatePomFileForMavenPublication (Thread[#54,Execution worker,5,main]) started.
+:bedrock-codec:generatePomFileForMavenPublication (Thread[#54,Execution worker,5,main]) started.
+
+> Task :bedrock-codec:generatePomFileForMavenPublication
+Caching disabled for task ':bedrock-codec:generatePomFileForMavenPublication' because:
+  Task is untracked because: Gradle doesn't understand the data structures used to configure this task
+Task ':bedrock-codec:generatePomFileForMavenPublication' is not up-to-date because:
+  Task is untracked because: Gradle doesn't understand the data structures used to configure this task
+Resolve mutations for :bedrock-codec:delombok (Thread[#55,Execution worker Thread 2,5,main]) started.
+:bedrock-codec:delombok (Thread[#55,Execution worker Thread 2,5,main]) started.
+
+> Task :bedrock-connection:delombok
+/home/runner/workspace/bedrock-connection/src/main/java/org/cloudburstmc/protocol/bedrock/netty/codec/compression/SnappyCompression.java:13: warning: sun.misc.Unsafe is internal proprietary API and may be removed in a future release
+import static sun.misc.Unsafe.ARRAY_BYTE_BASE_OFFSET;
+                      ^
+/home/runner/workspace/bedrock-connection/src/main/java/org/cloudburstmc/protocol/bedrock/netty/codec/compression/SnappyCompression.java:13: warning: sun.misc.Unsafe is internal proprietary API and may be removed in a future release
+import static sun.misc.Unsafe.ARRAY_BYTE_BASE_OFFSET;
+                      ^
+/home/runner/workspace/bedrock-connection/src/main/java/org/cloudburstmc/protocol/bedrock/netty/codec/compression/SnappyCompression.java:13: warning: sun.misc.Unsafe is internal proprietary API and may be removed in a future release
+import static sun.misc.Unsafe.ARRAY_BYTE_BASE_OFFSET;
+                      ^
+/home/runner/workspace/bedrock-connection/src/main/java/org/cloudburstmc/protocol/bedrock/netty/codec/compression/SnappyCompression.java:13: warning: sun.misc.Unsafe is internal proprietary API and may be removed in a future release
+import static sun.misc.Unsafe.ARRAY_BYTE_BASE_OFFSET;
+                      ^
+/home/runner/workspace/bedrock-connection/src/main/java/org/cloudburstmc/protocol/bedrock/netty/codec/compression/SnappyCompression.java:13: warning: sun.misc.Unsafe is internal proprietary API and may be removed in a future release
+import static sun.misc.Unsafe.ARRAY_BYTE_BASE_OFFSET;
+                      ^
+Stored cache entry for task ':bedrock-connection:delombok' with cache key 402b12d55bdfd2c042a477e7fd4d1f27
+Resolve mutations for :bedrock-connection:javadoc (Thread[#53,included builds,5,main]) started.
+:bedrock-connection:javadoc (Thread[#53,included builds,5,main]) started.
+
+> Task :bedrock-codec:delombok
+Build cache key for task ':bedrock-codec:delombok' is b3f1c320790556d59895137ed377f08c
+Task ':bedrock-codec:delombok' is not up-to-date because:
+  No history is available.
+Starting process 'command '/nix/store/k95pqfzyvrna93hc9a4cg5csl7l4fh0d-openjdk-21.0.7+6/lib/openjdk/bin/java''. Working directory: /home/runner/workspace/bedrock-codec Command: /nix/store/k95pqfzyvrna93hc9a4cg5csl7l4fh0d-openjdk-21.0.7+6/lib/openjdk/bin/java -Dfile.encoding=UTF-8 -Duser.country=US -Duser.language=en -Duser.variant -cp /home/runner/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.42/8365263844ebb62398e0dc33057ba10ba472d3b8/lombok-1.18.42.jar lombok.launch.Main delombok @/home/runner/workspace/bedrock-codec/build/tmp/delombok/delombok.options /home/runner/workspace/bedrock-codec/src/main/java
+Successfully started process 'command '/nix/store/k95pqfzyvrna93hc9a4cg5csl7l4fh0d-openjdk-21.0.7+6/lib/openjdk/bin/java''
+
+> Task :bedrock-connection:javadoc
+Build cache key for task ':bedrock-connection:javadoc' is 07d0b674d6500c548ddb0f2cae40175d
+Task ':bedrock-connection:javadoc' is not up-to-date because:
+  No history is available.
+Starting process 'command '/nix/store/k95pqfzyvrna93hc9a4cg5csl7l4fh0d-openjdk-21.0.7+6/lib/openjdk/bin/javadoc''. Working directory: /home/runner/workspace/bedrock-connection Command: /nix/store/k95pqfzyvrna93hc9a4cg5csl7l4fh0d-openjdk-21.0.7+6/lib/openjdk/bin/javadoc @/home/runner/workspace/bedrock-connection/build/tmp/javadoc/javadoc.options
+Successfully started process 'command '/nix/store/k95pqfzyvrna93hc9a4cg5csl7l4fh0d-openjdk-21.0.7+6/lib/openjdk/bin/javadoc''
+Stored cache entry for task ':bedrock-connection:javadoc' with cache key 07d0b674d6500c548ddb0f2cae40175d
+Resolve mutations for :bedrock-connection:plainJavadocJar (Thread[#54,Execution worker,5,main]) started.
+:bedrock-connection:plainJavadocJar (Thread[#53,included builds,5,main]) started.
+
+> Task :bedrock-connection:plainJavadocJar
+Build cache key for task ':bedrock-connection:plainJavadocJar' is 49545f990db9bf3ca802897b73f858bc
+Task ':bedrock-connection:plainJavadocJar' is not up-to-date because:
+  No history is available.
+Stored cache entry for task ':bedrock-connection:plainJavadocJar' with cache key 49545f990db9bf3ca802897b73f858bc
+Resolve mutations for :bedrock-connection:signMavenPublication (Thread[#54,Execution worker,5,main]) started.
+:bedrock-connection:signMavenPublication (Thread[#54,Execution worker,5,main]) started.
+
+> Task :bedrock-connection:signMavenPublication SKIPPED
+Skipping task ':bedrock-connection:signMavenPublication' as task onlyIf 'Signing is required, or signatory is set' is false.
+Resolve mutations for :bedrock-connection:publishMavenPublicationToMavenLocal (Thread[#53,included builds,5,main]) started.
+:bedrock-connection:publishMavenPublicationToMavenLocal (Thread[#53,included builds,5,main]) started.
+
+> Task :bedrock-connection:publishMavenPublicationToMavenLocal
+Caching disabled for task ':bedrock-connection:publishMavenPublicationToMavenLocal' because:
+  Not worth caching
+Task ':bedrock-connection:publishMavenPublicationToMavenLocal' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+Publishing to maven local repository
+Resolve mutations for :bedrock-connection:publishToMavenLocal (Thread[#53,included builds,5,main]) started.
+:bedrock-connection:publishToMavenLocal (Thread[#53,included builds,5,main]) started.
+
+> Task :bedrock-connection:publishToMavenLocal
+Skipping task ':bedrock-connection:publishToMavenLocal' as it has no actions.
+
+> Task :bedrock-codec:delombok
+/home/runner/workspace/bedrock-codec/src/main/java/org/cloudburstmc/protocol/bedrock/packet/PlayerListPacket.java:37: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+    private Action action;
+                   ^
+Stored cache entry for task ':bedrock-codec:delombok' with cache key b3f1c320790556d59895137ed377f08c
+Resolve mutations for :bedrock-codec:javadoc (Thread[#55,Execution worker Thread 2,5,main]) started.
+:bedrock-codec:javadoc (Thread[#53,included builds,5,main]) started.
+
+> Task :bedrock-codec:javadoc
+Build cache key for task ':bedrock-codec:javadoc' is b9801695cc9c1c033259512255efecec
+Task ':bedrock-codec:javadoc' is not up-to-date because:
+  No history is available.
+Starting process 'command '/nix/store/k95pqfzyvrna93hc9a4cg5csl7l4fh0d-openjdk-21.0.7+6/lib/openjdk/bin/javadoc''. Working directory: /home/runner/workspace/bedrock-codec Command: /nix/store/k95pqfzyvrna93hc9a4cg5csl7l4fh0d-openjdk-21.0.7+6/lib/openjdk/bin/javadoc @/home/runner/workspace/bedrock-codec/build/tmp/javadoc/javadoc.options
+Successfully started process 'command '/nix/store/k95pqfzyvrna93hc9a4cg5csl7l4fh0d-openjdk-21.0.7+6/lib/openjdk/bin/javadoc''
+Stored cache entry for task ':bedrock-codec:javadoc' with cache key b9801695cc9c1c033259512255efecec
+Resolve mutations for :bedrock-codec:plainJavadocJar (Thread[#53,included builds,5,main]) started.
+:bedrock-codec:plainJavadocJar (Thread[#53,included builds,5,main]) started.
+
+> Task :bedrock-codec:plainJavadocJar
+Build cache key for task ':bedrock-codec:plainJavadocJar' is 140ecf4ed94cc03c99d0e7904e395905
+Task ':bedrock-codec:plainJavadocJar' is not up-to-date because:
+  No history is available.
+Stored cache entry for task ':bedrock-codec:plainJavadocJar' with cache key 140ecf4ed94cc03c99d0e7904e395905
+Resolve mutations for :bedrock-codec:signMavenPublication (Thread[#54,Execution worker,5,main]) started.
+:bedrock-codec:signMavenPublication (Thread[#54,Execution worker,5,main]) started.
+
+> Task :bedrock-codec:signMavenPublication SKIPPED
+Skipping task ':bedrock-codec:signMavenPublication' as task onlyIf 'Signing is required, or signatory is set' is false.
+Resolve mutations for :bedrock-codec:publishMavenPublicationToMavenLocal (Thread[#54,Execution worker,5,main]) started.
+:bedrock-codec:publishMavenPublicationToMavenLocal (Thread[#54,Execution worker,5,main]) started.
+
+> Task :bedrock-codec:publishMavenPublicationToMavenLocal
+Caching disabled for task ':bedrock-codec:publishMavenPublicationToMavenLocal' because:
+  Not worth caching
+Task ':bedrock-codec:publishMavenPublicationToMavenLocal' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+Publishing to maven local repository
+Resolve mutations for :bedrock-codec:publishToMavenLocal (Thread[#54,Execution worker,5,main]) started.
+:bedrock-codec:publishToMavenLocal (Thread[#54,Execution worker,5,main]) started.
+
+> Task :bedrock-codec:publishToMavenLocal
+Skipping task ':bedrock-codec:publishToMavenLocal' as it has no actions.
+
+[Incubating] Problems report is available at: file:///home/runner/workspace/build/reports/problems/problems-report.html
+
+BUILD SUCCESSFUL in 48s
+27 actionable tasks: 21 executed, 5 from cache, 1 up-to-date
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.4.1/userguide/configuration_cache_enabling.html

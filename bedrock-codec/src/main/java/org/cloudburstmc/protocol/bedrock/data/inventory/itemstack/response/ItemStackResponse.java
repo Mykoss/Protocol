@@ -20,6 +20,22 @@ import java.util.List;
 public record ItemStackResponse(boolean success, ItemStackResponseStatus result, int requestId,
                                 List<ItemStackResponseContainer> containers) {
 
+    public boolean isSuccess() {
+        return success;
+    }
+
+    public ItemStackResponseStatus getResult() {
+        return result;
+    }
+
+    public int getRequestId() {
+        return requestId;
+    }
+
+    public List<ItemStackResponseContainer> getContainers() {
+        return containers;
+    }
+
     @Deprecated
     public ItemStackResponse(boolean success, int requestId, List<ItemStackResponseContainer> containers) {
         this(success, success ? ItemStackResponseStatus.OK : ItemStackResponseStatus.ERROR, requestId, containers);

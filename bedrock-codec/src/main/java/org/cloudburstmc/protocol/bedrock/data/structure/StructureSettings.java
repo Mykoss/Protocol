@@ -30,4 +30,17 @@ public record StructureSettings(boolean ignoringEntities, boolean ignoringBlocks
                                 StructureMirror mirror, float integrityValue, int integritySeed, String paletteName, long lastEditedByEntityId,
                                 Vector3f pivot, StructureAnimationMode animationMode, float animationSeconds,
                                 boolean nonTickingPlayersAndTickingAreasEnabled) {
+
+    /**
+     * Compatibility constructor matching the field order used by the v2168 upstream serializer.
+     */
+    public StructureSettings(String paletteName, boolean ignoringEntities, boolean ignoringBlocks,
+                             boolean nonTickingPlayersAndTickingAreasEnabled, Vector3i size, Vector3i offset,
+                             long lastEditedByEntityId, StructureRotation rotation, StructureMirror mirror,
+                             StructureAnimationMode animationMode, float animationSeconds, float integrityValue,
+                             int integritySeed, Vector3f pivot) {
+        this(ignoringEntities, ignoringBlocks, size, offset, rotation, mirror, integrityValue,
+                integritySeed, paletteName, lastEditedByEntityId, pivot, animationMode, animationSeconds,
+                nonTickingPlayersAndTickingAreasEnabled);
+    }
 }

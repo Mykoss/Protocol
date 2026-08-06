@@ -7,4 +7,13 @@ public interface NamedDefinition extends Definition {
      * @return identifier
      */
     String identifier();
+
+    /**
+     * JavaBean-style compatibility accessor used by older serializers and downstream forks.
+     *
+     * @return identifier
+     */
+    default String getIdentifier() {
+        return identifier();
+    }
 }

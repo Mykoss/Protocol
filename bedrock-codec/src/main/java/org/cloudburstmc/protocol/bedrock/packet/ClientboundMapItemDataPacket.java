@@ -87,6 +87,27 @@ public class ClientboundMapItemDataPacket implements BedrockPacket {
      */
     private Vector3i origin;
 
+    public void setTrackedEntityIds(LongList trackedEntityIds) {
+        this.trackedEntityIds.clear();
+        if (trackedEntityIds != null) {
+            this.trackedEntityIds.addAll(trackedEntityIds);
+        }
+    }
+
+    public void setTrackedObjects(List<MapTrackedObject> trackedObjects) {
+        this.trackedObjects.clear();
+        if (trackedObjects != null) {
+            this.trackedObjects.addAll(trackedObjects);
+        }
+    }
+
+    public void setDecorations(List<MapDecoration> decorations) {
+        this.decorations.clear();
+        if (decorations != null) {
+            this.decorations.addAll(decorations);
+        }
+    }
+
     @Override
     public final PacketSignal handle(BedrockPacketHandler handler) {
         return handler.handle(this);
