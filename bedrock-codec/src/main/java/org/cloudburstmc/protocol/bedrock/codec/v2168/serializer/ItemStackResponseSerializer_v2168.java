@@ -21,13 +21,15 @@ public class ItemStackResponseSerializer_v2168 extends ItemStackResponseSerializ
         helper.writeArray(buffer, packet.getEntries(), (buf, response) -> {
             buf.writeByte(response.getResult().ordinal());
             VarInts.writeInt(buf, response.getRequestId());
-            buf.writeBoolean(true);
-            if (response.getContainers().isEmpty()) {
-                buf.writeBoolean(false);
-                return;
+            boolean hasContainers = response.getResult() == ItemStackResponseStatus.OK;
+            buf.writeBoolean(hasContainers);
+            if (hasContainers) {
+                helper.writeArray(
+                    buf,
+                    response.getContainers(),
+                    helper::writeItemStackResponseContainer
+                );
             }
-            buf.writeBoolean(true);
-            helper.writeArray(buf, response.getContainers(), helper::writeItemStackResponseContainer);
         });
     }
 
@@ -37,7 +39,7 @@ public class ItemStackResponseSerializer_v2168 extends ItemStackResponseSerializ
         helper.readArray(buffer, entries, buf -> {
             ItemStackResponseStatus result = ItemStackResponseStatus.values()[buf.readByte()];
             int requestId = VarInts.readInt(buf);
-            if (buf.readBoolean() && buf.readBoolean()) {
+            if (buf.readBoolean()) {
                 List<ItemStackResponseContainer> containerEntries = new ArrayList<>();
                 helper.readArray(buf, containerEntries, helper::readItemStackResponseContainer);
                 return new ItemStackResponse(result, requestId, containerEntries);
