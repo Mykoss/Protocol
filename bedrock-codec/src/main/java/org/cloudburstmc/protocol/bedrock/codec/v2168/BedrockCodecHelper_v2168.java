@@ -54,6 +54,16 @@ public class BedrockCodecHelper_v2168 extends BedrockCodecHelper_v975 {
         super(entityData, gameRulesTypes, stackRequestActionTypes, containerSlotTypes, abilities, textProcessingEventOrigins);
     }
 
+    /**
+     * Protocol 2168 compatibility: this fork still routes several outbound inventory packets through
+     * writeNetItemDescriptor(). Keep all of them on the v2168 descriptor writer so Stack Network IDs
+     * are handled consistently in one place.
+     */
+    @Override
+    public void writeNetItemDescriptor(ByteBuf buffer, ItemData item) {
+        writeNetworkItemStackDescriptor(buffer, item);
+    }
+
     @Override
     public void readEntityData(ByteBuf buffer, EntityDataMap entityDataMap) {
         checkNotNull(entityDataMap, "entityDataMap");
@@ -367,10 +377,9 @@ public class BedrockCodecHelper_v2168 extends BedrockCodecHelper_v975 {
         buffer.writeShortLE(item.getCount());
         VarInts.writeUnsignedInt(buffer, item.getDamage());
 
-        buffer.writeBoolean(item.isUsingNetId());
-        if (item.isUsingNetId()) {
-            VarInts.writeInt(buffer, item.getNetId());
-        }
+        // Minecraft 1.26.40 / protocol 2168 in this compatibility fork disconnects when
+        // server-side Stack Network IDs are emitted. Keep the optional Net Id Variant absent.
+        buffer.writeBoolean(false);
 
         VarInts.writeUnsignedInt(buffer, air || item.getBlockDefinition() == null ? 0 : item.getBlockDefinition().getRuntimeId());
 
@@ -918,7 +927,7 @@ public class BedrockCodecHelper_v2168 extends BedrockCodecHelper_v975 {
         this.writeOptional(
             buffer,
             ignored -> itemEntry.getCount() > 0,
-            itemEntry.getStackNetworkId(),
+            0,
             VarInts::writeInt
         );
 
