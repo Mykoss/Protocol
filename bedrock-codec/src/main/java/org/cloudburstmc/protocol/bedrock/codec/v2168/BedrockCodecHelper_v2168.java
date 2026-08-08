@@ -55,16 +55,6 @@ public class BedrockCodecHelper_v2168 extends BedrockCodecHelper_v975 {
     }
 
     @Override
-    public ItemData readNetItemDescriptor(ByteBuf buffer) {
-        return readNetworkItemStackDescriptor(buffer);
-    }
-    
-    @Override
-    public void writeNetItemDescriptor(ByteBuf buffer, ItemData item) {
-        writeNetworkItemStackDescriptor(buffer, item);
-    }
-
-    @Override
     public void readEntityData(ByteBuf buffer, EntityDataMap entityDataMap) {
         checkNotNull(entityDataMap, "entityDataMap");
 
