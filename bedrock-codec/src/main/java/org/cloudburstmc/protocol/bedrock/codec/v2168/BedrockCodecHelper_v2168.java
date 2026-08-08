@@ -55,10 +55,15 @@ public class BedrockCodecHelper_v2168 extends BedrockCodecHelper_v975 {
     }
 
     /**
-     * Protocol 2168 compatibility: this fork still routes several outbound inventory packets through
-     * writeNetItemDescriptor(). Keep all of them on the v2168 descriptor writer so Stack Network IDs
-     * are handled consistently in one place.
+     * Protocol 2168 compatibility: this fork still routes several inventory packet serializers through
+     * read/writeNetItemDescriptor(). Keep both directions on the v2168 descriptor codec so Stack
+     * Network IDs are handled consistently in one place.
      */
+    @Override
+    public ItemData readNetItemDescriptor(ByteBuf buffer) {
+        return readNetworkItemStackDescriptor(buffer);
+    }
+
     @Override
     public void writeNetItemDescriptor(ByteBuf buffer, ItemData item) {
         writeNetworkItemStackDescriptor(buffer, item);
