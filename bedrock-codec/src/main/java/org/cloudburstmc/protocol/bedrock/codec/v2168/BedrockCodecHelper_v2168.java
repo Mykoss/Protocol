@@ -382,9 +382,10 @@ public class BedrockCodecHelper_v2168 extends BedrockCodecHelper_v975 {
         buffer.writeShortLE(item.getCount());
         VarInts.writeUnsignedInt(buffer, item.getDamage());
 
-        // Minecraft 1.26.40 / protocol 2168 in this compatibility fork disconnects when
-        // server-side Stack Network IDs are emitted. Keep the optional Net Id Variant absent.
-        buffer.writeBoolean(false);
+        buffer.writeBoolean(item.isUsingNetId());
+        if (item.isUsingNetId()) {
+            VarInts.writeInt(buffer, item.getNetId());
+        }
 
         VarInts.writeUnsignedInt(buffer, air || item.getBlockDefinition() == null ? 0 : item.getBlockDefinition().getRuntimeId());
 
@@ -914,7 +915,7 @@ public class BedrockCodecHelper_v2168 extends BedrockCodecHelper_v975 {
         int slot = buffer.readUnsignedByte();
         int hotbarSlot = buffer.readUnsignedByte();
         int count = buffer.readUnsignedByte();
-        int stackNetworkId = buffer.readBoolean() ? VarInts.readInt(buffer) : 0;
+        int stackNetworkId = buffer.readBoolean() && buffer.readBoolean() ? VarInts.readInt(buffer) : 0;
         String customName = this.readString(buffer);
         String filteredCustomName = this.readString(buffer);
         int durabilityCorrection = VarInts.readInt(buffer);
@@ -929,10 +930,11 @@ public class BedrockCodecHelper_v2168 extends BedrockCodecHelper_v975 {
         buffer.writeByte(itemEntry.getHotbarSlot());
         buffer.writeByte(itemEntry.getCount());
 
+        buffer.writeBoolean(true);
         this.writeOptional(
             buffer,
-            ignored -> itemEntry.getCount() > 0,
-            0,
+            id -> id > 0,
+            itemEntry.getStackNetworkId(),
             VarInts::writeInt
         );
 
