@@ -915,7 +915,7 @@ public class BedrockCodecHelper_v2168 extends BedrockCodecHelper_v975 {
         int slot = buffer.readUnsignedByte();
         int hotbarSlot = buffer.readUnsignedByte();
         int count = buffer.readUnsignedByte();
-        int stackNetworkId = buffer.readBoolean() && buffer.readBoolean() ? VarInts.readInt(buffer) : 0;
+        int stackNetworkId = VarInts.readInt(buffer);
         String customName = this.readString(buffer);
         String filteredCustomName = this.readString(buffer);
         int durabilityCorrection = VarInts.readInt(buffer);
@@ -926,17 +926,9 @@ public class BedrockCodecHelper_v2168 extends BedrockCodecHelper_v975 {
     @Override
     protected void writeItemEntry(ByteBuf buffer, ItemStackResponseSlot itemEntry) {
         buffer.writeByte(itemEntry.getSlot());
-
         buffer.writeByte(itemEntry.getHotbarSlot());
         buffer.writeByte(itemEntry.getCount());
-
-        buffer.writeBoolean(true);
-        this.writeOptional(
-            buffer,
-            id -> id > 0,
-            itemEntry.getStackNetworkId(),
-            VarInts::writeInt
-        );
+        VarInts.writeInt(buffer, itemEntry.getStackNetworkId());
 
         this.writeString(buffer, itemEntry.getCustomName());
         this.writeString(buffer, itemEntry.getFilteredCustomName());
@@ -1108,24 +1100,19 @@ public class BedrockCodecHelper_v2168 extends BedrockCodecHelper_v975 {
     public InventorySource readSource(ByteBuf buffer) {
         InventorySource.Type type = InventorySource.Type.byId(VarInts.readUnsignedInt(buffer));
 
-        int containerId = 0;
-        InventorySource.Flag flag = null;
-        if (buffer.readBoolean() && buffer.readBoolean()) containerId = buffer.readByte();
-        if (buffer.readBoolean() && buffer.readBoolean()) flag = InventorySource.Flag.values()[VarInts.readUnsignedInt(buffer)];
         switch (type) {
             case CONTAINER:
-                return InventorySource.fromContainerWindowId(containerId);
+                return InventorySource.fromContainerWindowId(VarInts.readInt(buffer));
             case GLOBAL:
                 return InventorySource.fromGlobalInventory();
             case WORLD_INTERACTION:
-                if (flag == null) throw new IllegalStateException();
-                return InventorySource.fromWorldInteraction(flag);
+                return InventorySource.fromWorldInteraction(InventorySource.Flag.values()[VarInts.readUnsignedInt(buffer)]);
             case CREATIVE:
                 return InventorySource.fromCreativeInventory();
             case NON_IMPLEMENTED_TODO:
-                return InventorySource.fromNonImplementedTodo(containerId);
+                return InventorySource.fromNonImplementedTodo(VarInts.readInt(buffer));
             case UNTRACKED_INTERACTION_UI:
-                return InventorySource.fromUntrackedInteractionUI(containerId);
+                return InventorySource.fromUntrackedInteractionUI(VarInts.readInt(buffer));
             default:
                 return InventorySource.fromInvalid();
         }
@@ -1137,26 +1124,16 @@ public class BedrockCodecHelper_v2168 extends BedrockCodecHelper_v975 {
 
         VarInts.writeUnsignedInt(buffer, inventorySource.type().id());
 
-        buffer.writeBoolean(true);
         switch (inventorySource.type()) {
             case CONTAINER:
+            case UNTRACKED_INTERACTION_UI:
             case NON_IMPLEMENTED_TODO:
-                buffer.writeBoolean(true);
-                buffer.writeByte(inventorySource.containerId());
+                VarInts.writeInt(buffer, inventorySource.containerId());
                 break;
-            default:
-                buffer.writeBoolean(false);
-                break;
-        }
-
-        buffer.writeBoolean(true);
-        switch (inventorySource.type()) {
             case WORLD_INTERACTION:
-                buffer.writeBoolean(true);
                 VarInts.writeUnsignedInt(buffer, inventorySource.flag().ordinal());
                 break;
             default:
-                buffer.writeBoolean(false);
                 break;
         }
     }
