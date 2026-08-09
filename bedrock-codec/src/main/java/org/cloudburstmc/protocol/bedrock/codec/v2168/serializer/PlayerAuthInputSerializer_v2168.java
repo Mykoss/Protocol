@@ -14,6 +14,10 @@ import org.cloudburstmc.protocol.bedrock.util.VarInts;
 public class PlayerAuthInputSerializer_v2168 extends PlayerAuthInputSerializer_v944 {
     public static final PlayerAuthInputSerializer_v2168 INSTANCE = new PlayerAuthInputSerializer_v2168();
 
+    // NOTA: ya NO se sobreescriben readItemUseTransaction / writeItemUseTransaction.
+    // Se heredan de v944 (que a su vez hereda de v712) sin cambios, porque no hay
+    // ningún campo nuevo documentado para 1.26.40 en esta transacción.
+
     @Override
     public void serialize(ByteBuf buffer, BedrockCodecHelper helper, PlayerAuthInputPacket packet) {
         Vector3f rotation = packet.getRotation();
@@ -37,7 +41,7 @@ public class PlayerAuthInputSerializer_v2168 extends PlayerAuthInputSerializer_v
             helper.writeItemStackRequest(buffer, packet.getItemStackRequest());
         }
         if (packet.getInputData().contains(PlayerAuthInputData.PERFORM_BLOCK_ACTIONS)) {
-            VarInts.writeUnsignedInt(buffer, packet.getPlayerActions().size());
+            VarInts.writeInt(buffer, packet.getPlayerActions().size());
             for (PlayerBlockActionData actionData : packet.getPlayerActions()) writePlayerBlockActionData(buffer, helper, actionData);
         }
         if (packet.getInputData().contains(PlayerAuthInputData.IN_CLIENT_PREDICTED_IN_VEHICLE)) {
@@ -71,7 +75,7 @@ public class PlayerAuthInputSerializer_v2168 extends PlayerAuthInputSerializer_v
             packet.setItemStackRequest(helper.readItemStackRequest(buffer));
         }
         if (packet.getInputData().contains(PlayerAuthInputData.PERFORM_BLOCK_ACTIONS)) {
-            helper.readArray(buffer, packet.getPlayerActions(), this::readPlayerBlockActionData, 32);
+            helper.readArray(buffer, packet.getPlayerActions(), VarInts::readInt, this::readPlayerBlockActionData, 32);
         }
         if (packet.getInputData().contains(PlayerAuthInputData.IN_CLIENT_PREDICTED_IN_VEHICLE)) {
             packet.setVehicleRotation(helper.readVector2f(buffer));
@@ -81,12 +85,6 @@ public class PlayerAuthInputSerializer_v2168 extends PlayerAuthInputSerializer_v
         packet.setCameraOrientation(helper.readVector3f(buffer));
         packet.setRawMoveVector(helper.readVector2f(buffer));
     }
-
-    // readItemUseTransaction / writeItemUseTransaction: deja los que ya tenías,
-    // pero verifica si de verdad necesitas reescribirlos completos o si basta
-    // con heredar de v944 (super.readItemUseTransaction) y solo añadir campos
-    // realmente nuevos de 1.26.40 (si los hay). Mantener la reescritura completa
-    // es el mismo riesgo que causó este bug.
 
     @Override
     protected void writePlayerBlockActionData(ByteBuf buffer, BedrockCodecHelper helper, PlayerBlockActionData actionData) {
