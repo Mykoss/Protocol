@@ -715,7 +715,7 @@ public class BedrockCodecHelper_v2168 extends BedrockCodecHelper_v975 {
     }
 
     @Override
-    public ItemStackRequest readItemStackRequest(ByteBuf buffer) {
+public ItemStackRequest readItemStackRequest(ByteBuf buffer) {
         int requestId = VarInts.readInt(buffer);
         List<ItemStackRequestAction> actions = new ObjectArrayList<>();
 
