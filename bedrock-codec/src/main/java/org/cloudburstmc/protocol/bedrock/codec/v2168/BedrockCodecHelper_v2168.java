@@ -915,7 +915,7 @@ public ItemStackRequest readItemStackRequest(ByteBuf buffer) {
         int slot = buffer.readUnsignedByte();
         int hotbarSlot = buffer.readUnsignedByte();
         int count = buffer.readUnsignedByte();
-        int stackNetworkId = buffer.readBoolean() && buffer.readBoolean() ? VarInts.readInt(buffer) : 0;
+        int stackNetworkId = buffer.readBoolean() ? VarInts.readInt(buffer) : 0;
         String customName = this.readString(buffer);
         String filteredCustomName = this.readString(buffer);
         int durabilityCorrection = VarInts.readInt(buffer);
@@ -928,7 +928,6 @@ public ItemStackRequest readItemStackRequest(ByteBuf buffer) {
         buffer.writeByte(itemEntry.getSlot());
         buffer.writeByte(itemEntry.getHotbarSlot());
         buffer.writeByte(itemEntry.getCount());
-        buffer.writeBoolean(true);
         this.writeOptional(buffer, id -> id > 0, itemEntry.getStackNetworkId(), VarInts::writeInt);
         this.writeString(buffer, itemEntry.getCustomName());
         this.writeString(buffer, itemEntry.getFilteredCustomName());

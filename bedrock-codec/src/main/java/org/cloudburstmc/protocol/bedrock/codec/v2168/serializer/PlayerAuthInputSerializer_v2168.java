@@ -27,8 +27,8 @@ public class PlayerAuthInputSerializer_v2168 extends PlayerAuthInputSerializer_v
         buffer.writeFloatLE(packet.getMotion().getY());
         buffer.writeFloatLE(rotation.getZ());
 
-        // v2168 no usa LargeVarIntFlags para inputData.
-        buffer.writeBoolean(true);
+        // v2168 no usa LargeVarIntFlags para inputData: se escribe como cantidad + ordinals.
+        // (Este campo no es opcional, por lo que no lleva boolean de presencia.)
         VarInts.writeUnsignedInt(buffer, packet.getInputData().size());
         for (PlayerAuthInputData flag : packet.getInputData()) {
             VarInts.writeInt(buffer, flag.ordinal());
@@ -41,53 +41,27 @@ public class PlayerAuthInputSerializer_v2168 extends PlayerAuthInputSerializer_v
         VarInts.writeUnsignedLong(buffer, packet.getTick());
         helper.writeVector3f(buffer, packet.getDelta());
 
-        // ItemUseTransaction optional.
-        buffer.writeBoolean(true);
+        // La presencia de estos campos ya la determina el set de flags inputData;
+        // el protocolo real NO envía un boolean de presencia adicional para cada uno.
         if (packet.getInputData().contains(PlayerAuthInputData.PERFORM_ITEM_INTERACTION)) {
-            buffer.writeBoolean(true);
             this.writeItemUseTransaction(buffer, helper, packet.getItemUseTransaction());
-        } else {
-            buffer.writeBoolean(false);
         }
 
-        // ItemStackRequest optional.
-        buffer.writeBoolean(true);
         if (packet.getInputData().contains(PlayerAuthInputData.PERFORM_ITEM_STACK_REQUEST)) {
-            buffer.writeBoolean(true);
             helper.writeItemStackRequest(buffer, packet.getItemStackRequest());
-        } else {
-            buffer.writeBoolean(false);
         }
 
-        // Player block actions optional.
-        buffer.writeBoolean(true);
         if (packet.getInputData().contains(PlayerAuthInputData.PERFORM_BLOCK_ACTIONS)) {
-            buffer.writeBoolean(true);
             VarInts.writeUnsignedInt(buffer, packet.getPlayerActions().size());
 
             for (PlayerBlockActionData actionData : packet.getPlayerActions()) {
                 writePlayerBlockActionData(buffer, helper, actionData);
             }
-        } else {
-            buffer.writeBoolean(false);
         }
 
-        // Vehicle rotation optional.
-        buffer.writeBoolean(true);
         if (packet.getInputData().contains(PlayerAuthInputData.IN_CLIENT_PREDICTED_IN_VEHICLE)) {
-            buffer.writeBoolean(true);
             helper.writeVector2f(buffer, packet.getVehicleRotation());
-        } else {
-            buffer.writeBoolean(false);
-        }
-
-        // Predicted vehicle optional.
-        buffer.writeBoolean(true);
-        if (packet.getInputData().contains(PlayerAuthInputData.IN_CLIENT_PREDICTED_IN_VEHICLE)) {
-            buffer.writeBoolean(true);
             VarInts.writeLong(buffer, packet.getPredictedVehicle());
-        } else {
-            buffer.writeBoolean(false);
         }
 
         helper.writeVector2f(buffer, packet.getAnalogMoveVector());
@@ -109,9 +83,8 @@ public class PlayerAuthInputSerializer_v2168 extends PlayerAuthInputSerializer_v
         float z = buffer.readFloatLE();
         packet.setRotation(Vector3f.from(x, y, z));
 
-        // v2168:
-        // boolean de presencia + cantidad + ordinals como signed VarInt.
-        if (buffer.readBoolean()) {
+        // v2168: cantidad + ordinals como signed VarInt (campo obligatorio, sin boolean de presencia).
+        {
             int count = VarInts.readUnsignedInt(buffer);
 
             for (int i = 0; i < count; i++) {
@@ -152,7 +125,7 @@ public class PlayerAuthInputSerializer_v2168 extends PlayerAuthInputSerializer_v
                 helper.readVector3f(buffer)
         );
 
-        if (buffer.readBoolean() && buffer.readBoolean()) {
+        if (packet.getInputData().contains(PlayerAuthInputData.PERFORM_ITEM_INTERACTION)) {
             packet.setItemUseTransaction(
                     this.readItemUseTransaction(
                             buffer,
@@ -161,13 +134,13 @@ public class PlayerAuthInputSerializer_v2168 extends PlayerAuthInputSerializer_v
             );
         }
 
-        if (buffer.readBoolean() && buffer.readBoolean()) {
+        if (packet.getInputData().contains(PlayerAuthInputData.PERFORM_ITEM_STACK_REQUEST)) {
             packet.setItemStackRequest(
                     helper.readItemStackRequest(buffer)
             );
         }
 
-        if (buffer.readBoolean() && buffer.readBoolean()) {
+        if (packet.getInputData().contains(PlayerAuthInputData.PERFORM_BLOCK_ACTIONS)) {
             helper.readArray(
                     buffer,
                     packet.getPlayerActions(),
@@ -176,13 +149,10 @@ public class PlayerAuthInputSerializer_v2168 extends PlayerAuthInputSerializer_v
             );
         }
 
-        if (buffer.readBoolean() && buffer.readBoolean()) {
+        if (packet.getInputData().contains(PlayerAuthInputData.IN_CLIENT_PREDICTED_IN_VEHICLE)) {
             packet.setVehicleRotation(
                     helper.readVector2f(buffer)
             );
-        }
-
-        if (buffer.readBoolean() && buffer.readBoolean()) {
             packet.setPredictedVehicle(
                     VarInts.readLong(buffer)
             );
@@ -213,8 +183,6 @@ public class PlayerAuthInputSerializer_v2168 extends PlayerAuthInputSerializer_v
         if (legacyRequestId < -1 &&
                 (legacyRequestId & 1) == 0) {
 
-            buffer.writeBoolean(true);
-
             helper.writeArray(
                     buffer,
                     transaction.getLegacySlots(),
@@ -226,14 +194,7 @@ public class PlayerAuthInputSerializer_v2168 extends PlayerAuthInputSerializer_v
                         );
                     }
             );
-        } else {
-            buffer.writeBoolean(false);
         }
-
-        // v2168 agrega framing de presencia para
-        // las inventory actions.
-        buffer.writeBoolean(true);
-        buffer.writeBoolean(true);
 
         helper.writeInventoryActions(
                 buffer,
@@ -310,42 +271,36 @@ public class PlayerAuthInputSerializer_v2168 extends PlayerAuthInputSerializer_v
                 legacyRequestId
         );
 
-        if (buffer.readBoolean()) {
-            if (legacyRequestId < -1 &&
-                    (legacyRequestId & 1) == 0) {
+        if (legacyRequestId < -1 &&
+                (legacyRequestId & 1) == 0) {
 
-                helper.readArray(
-                        buffer,
-                        transaction.getLegacySlots(),
-                        (buf, packetHelper) -> {
-                            int containerId =
-                                    buf.readUnsignedByte();
+            helper.readArray(
+                    buffer,
+                    transaction.getLegacySlots(),
+                    (buf, packetHelper) -> {
+                        int containerId =
+                                buf.readUnsignedByte();
 
-                            byte[] slots =
-                                    packetHelper.readByteArray(
-                                            buf,
-                                            89
-                                    );
+                        byte[] slots =
+                                packetHelper.readByteArray(
+                                        buf,
+                                        89
+                                );
 
-                            return new LegacySetItemSlotData(
-                                    containerId,
-                                    slots
-                            );
-                        }
-                );
-            }
-        }
-
-        if (buffer.readBoolean() &&
-                buffer.readBoolean()) {
-
-            transaction.setUsingNetIds(
-                    helper.readInventoryActions(
-                            buffer,
-                            transaction.getActions()
-                    )
+                        return new LegacySetItemSlotData(
+                                containerId,
+                                slots
+                        );
+                    }
             );
         }
+
+        transaction.setUsingNetIds(
+                helper.readInventoryActions(
+                        buffer,
+                        transaction.getActions()
+                )
+        );
 
         transaction.setActionType(
                 VarInts.readInt(buffer)
