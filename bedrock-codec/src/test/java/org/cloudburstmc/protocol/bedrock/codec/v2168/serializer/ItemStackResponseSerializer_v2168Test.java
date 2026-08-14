@@ -20,6 +20,30 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class ItemStackResponseSerializer_v2168Test {
 
     @Test
+    void rejectedResponseAcceptsLegacyNullContainers() {
+        var helper = Bedrock_v2168.CODEC.createHelper();
+        var packet = new ItemStackResponsePacket();
+        packet.getEntries().add(new ItemStackResponse(
+                ItemStackResponseStatus.ERROR,
+                -5,
+                null
+        ));
+        ByteBuf buffer = Unpooled.buffer();
+
+        ItemStackResponseSerializer_v2168.INSTANCE.serialize(buffer, helper, packet);
+
+        assertEquals("0101090100", ByteBufUtil.hexDump(buffer));
+
+        var decoded = new ItemStackResponsePacket();
+        ItemStackResponseSerializer_v2168.INSTANCE.deserialize(buffer, helper, decoded);
+
+        assertEquals(ItemStackResponseStatus.ERROR, decoded.getEntries().getFirst().getResult());
+        assertEquals(-5, decoded.getEntries().getFirst().getRequestId());
+        assertEquals(List.of(), decoded.getEntries().getFirst().getContainers());
+        assertEquals(0, buffer.readableBytes());
+    }
+
+    @Test
     void dropResponseUsesV2168PresenceFraming() {
         var helper = Bedrock_v2168.CODEC.createHelper();
         var containerName = new FullContainerName(ContainerSlotType.INVENTORY, null);

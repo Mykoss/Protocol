@@ -23,14 +23,15 @@ public class ItemStackResponseSerializer_v2168 extends ItemStackResponseSerializ
             buf.writeByte(response.getResult().ordinal());
             VarInts.writeInt(buffer, response.getRequestId());
 
+            List<ItemStackResponseContainer> containers = response.getContainers();
             buf.writeBoolean(true);
-            if (response.getContainers().isEmpty()) {
+            if (containers == null || containers.isEmpty()) {
                 buf.writeBoolean(false);
                 return;
             }
 
             buf.writeBoolean(true);
-            helper.writeArray(buf, response.getContainers(), helper::writeItemStackResponseContainer);
+            helper.writeArray(buf, containers, helper::writeItemStackResponseContainer);
         });
     }
 
