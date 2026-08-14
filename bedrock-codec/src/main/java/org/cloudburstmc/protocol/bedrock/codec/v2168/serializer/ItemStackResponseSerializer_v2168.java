@@ -23,10 +23,13 @@ public class ItemStackResponseSerializer_v2168 extends ItemStackResponseSerializ
             buf.writeByte(response.getResult().ordinal());
             VarInts.writeInt(buffer, response.getRequestId());
 
-            if (response.getResult() != ItemStackResponseStatus.OK) {
+            buf.writeBoolean(true);
+            if (response.getContainers().isEmpty()) {
+                buf.writeBoolean(false);
                 return;
             }
 
+            buf.writeBoolean(true);
             helper.writeArray(buf, response.getContainers(), helper::writeItemStackResponseContainer);
         });
     }
@@ -38,13 +41,13 @@ public class ItemStackResponseSerializer_v2168 extends ItemStackResponseSerializ
             ItemStackResponseStatus result = ItemStackResponseStatus.values()[buf.readByte()];
             int requestId = VarInts.readInt(buf);
 
-            if (result != ItemStackResponseStatus.OK) {
+            if (buffer.readBoolean() && buffer.readBoolean()) {
+                List<ItemStackResponseContainer> containerEntries = new ArrayList<>();
+                helper.readArray(buf, containerEntries, helper::readItemStackResponseContainer);
+                return new ItemStackResponse(result, requestId, containerEntries);
+            } else {
                 return new ItemStackResponse(result, requestId, Collections.emptyList());
             }
-
-            List<ItemStackResponseContainer> containerEntries = new ArrayList<>();
-            helper.readArray(buf, containerEntries, helper::readItemStackResponseContainer);
-            return new ItemStackResponse(result, requestId, containerEntries);
         });
     }
 }
