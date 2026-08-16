@@ -10,11 +10,4 @@ package org.cloudburstmc.protocol.bedrock.data;
 public record EduSharedUriResource(String buttonName, String linkUri) {
     public static final EduSharedUriResource EMPTY = new EduSharedUriResource("", "");
 
-    public String getButtonName() {
-        return buttonName;
-    }
-
-    public String getLinkUri() {
-        return linkUri;
-    }
 }

@@ -27,6 +27,11 @@ public class TransferPacket implements BedrockPacket {
      * @since v729
      */
     private boolean reloadWorld;
+    /**
+     * Optional Gatherings experience metadata that the client should use for this transfer.
+     *
+     * @since v2168
+     */
     private GatheringsConfigurationJoinInfo gatheringsConfigurationJoinInfo;
 
     @Override

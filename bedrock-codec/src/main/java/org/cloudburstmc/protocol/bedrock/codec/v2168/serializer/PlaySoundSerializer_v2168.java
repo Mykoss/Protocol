@@ -6,7 +6,7 @@ import org.cloudburstmc.protocol.bedrock.codec.v291.serializer.PlaySoundSerializ
 import org.cloudburstmc.protocol.bedrock.packet.PlaySoundPacket;
 import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
-public class PlaySoundSerializer_v2168 extends PlaySoundSerializer_v291 {
+public class PlaySoundSerializer_v2168 extends PlaySoundSerializer_v291 { // v291 intentional
 
     public static final PlaySoundSerializer_v2168 INSTANCE = new PlaySoundSerializer_v2168();
 

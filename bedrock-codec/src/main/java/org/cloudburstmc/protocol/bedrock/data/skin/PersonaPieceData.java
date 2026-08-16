@@ -1,35 +1,14 @@
 package org.cloudburstmc.protocol.bedrock.data.skin;
 
-import lombok.Data;
-import java.util.UUID;
-
-@Data
-public class PersonaPieceData {
-    String id;
-    PersonaPieceType pieceType;
-    UUID packUuid;
-    boolean isDefault;
-    String productId;
-
-    public PersonaPieceData(String id, String type, String packId, boolean isDefault, String productId) {
-        this(id, PersonaPieceType.fromName(type), UUID.fromString(packId), isDefault, productId);
-    }
-
-    public PersonaPieceData(String id, PersonaPieceType pieceType, UUID packId, boolean isDefault, String productId) {
-        this.id = id;
-        this.pieceType = pieceType;
-        this.packUuid = packId;
-        this.isDefault = isDefault;
-        this.productId = productId;
-    }
-
-    // Compatibility with the record API used by codecs before v2168.
-    public String id() { return id; }
-    public String type() { return getType(); }
-    public String packId() { return getPackId(); }
-    public boolean isDefault() { return isDefault; }
-    public String productId() { return productId; }
-
-    public String getPackId() { return packUuid.toString(); }
-    public String getType() { return pieceType.getSerializeName(); }
+/**
+ * Represents a piece of a persona skin. All pieces are sent separately.
+ *
+ * @param id        The ID.
+ * @param type      The type.
+ * @param packId    A UUID that identifies the pack that the persona piece belongs to.
+ * @param isDefault Whether default.
+ * @param productId A UUID that identifies the piece when it comes to purchases. It is empty for pieces that have
+ *                  the 'IsDefault' field set to true.
+ */
+public record PersonaPieceData(String id, String type, String packId, boolean isDefault, String productId) {
 }

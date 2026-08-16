@@ -18,11 +18,7 @@ import org.cloudburstmc.nbt.NBTInputStream;
 import org.cloudburstmc.nbt.NBTOutputStream;
 import org.cloudburstmc.nbt.NbtType;
 import org.cloudburstmc.nbt.NbtUtils;
-import org.cloudburstmc.protocol.bedrock.data.EncodingSettings;
-import org.cloudburstmc.protocol.bedrock.data.ExperimentData;
-import org.cloudburstmc.protocol.bedrock.data.GatheringsConfigurationJoinInfo;
-import org.cloudburstmc.protocol.bedrock.data.PlayerAbilityHolder;
-import org.cloudburstmc.protocol.bedrock.data.PresenceConfiguration;
+import org.cloudburstmc.protocol.bedrock.data.*;
 import org.cloudburstmc.protocol.bedrock.data.definitions.BlockDefinition;
 import org.cloudburstmc.protocol.bedrock.data.definitions.ItemDefinition;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityProperties;
@@ -640,12 +636,12 @@ public abstract class BaseBedrockCodecHelper implements BedrockCodecHelper {
     }
 
     @Override
-    public void writeGatheringsConfiguration(ByteBuf buffer, BedrockCodecHelper helper, GatheringsConfigurationJoinInfo info) {
+    public void writeGatheringsConfiguration(ByteBuf byteBuf, BedrockCodecHelper bedrockCodecHelper, GatheringsConfigurationJoinInfo gatheringsConfigurationJoinInfo) {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public GatheringsConfigurationJoinInfo readGatheringsConfiguration(ByteBuf buffer, BedrockCodecHelper helper) {
+    public GatheringsConfigurationJoinInfo readGatheringsConfiguration(ByteBuf byteBuf, BedrockCodecHelper bedrockCodecHelper) {
         throw new UnsupportedOperationException();
     }
 }

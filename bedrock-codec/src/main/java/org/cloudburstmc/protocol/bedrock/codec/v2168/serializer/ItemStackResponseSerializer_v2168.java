@@ -20,11 +20,11 @@ public class ItemStackResponseSerializer_v2168 extends ItemStackResponseSerializ
     @Override
     public void serialize(ByteBuf buffer, BedrockCodecHelper helper, ItemStackResponsePacket packet) {
         helper.writeArray(buffer, packet.getEntries(), (buf, response) -> {
-            buf.writeByte(response.getResult().ordinal());
-            VarInts.writeInt(buffer, response.getRequestId());
+            buf.writeByte(response.result().ordinal());
+            VarInts.writeInt(buffer, response.requestId());
 
-            List<ItemStackResponseContainer> containers = response.getContainers();
             buf.writeBoolean(true);
+            List containers = response.containers();
             if (containers == null || containers.isEmpty()) {
                 buf.writeBoolean(false);
                 return;
@@ -37,13 +37,13 @@ public class ItemStackResponseSerializer_v2168 extends ItemStackResponseSerializ
 
     @Override
     public void deserialize(ByteBuf buffer, BedrockCodecHelper helper, ItemStackResponsePacket packet) {
-        List<ItemStackResponse> entries = packet.getEntries();
+        List entries = packet.getEntries();
         helper.readArray(buffer, entries, buf -> {
             ItemStackResponseStatus result = ItemStackResponseStatus.values()[buf.readByte()];
             int requestId = VarInts.readInt(buf);
 
             if (buffer.readBoolean() && buffer.readBoolean()) {
-                List<ItemStackResponseContainer> containerEntries = new ArrayList<>();
+                List containerEntries = new ArrayList();
                 helper.readArray(buf, containerEntries, helper::readItemStackResponseContainer);
                 return new ItemStackResponse(result, requestId, containerEntries);
             } else {

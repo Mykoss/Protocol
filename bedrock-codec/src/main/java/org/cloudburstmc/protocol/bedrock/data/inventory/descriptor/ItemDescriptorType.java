@@ -1,21 +1,40 @@
 package org.cloudburstmc.protocol.bedrock.data.inventory.descriptor;
 
-import lombok.Getter;
-import java.util.HashMap;
-import java.util.Map;
-
+/**
+ * ItemType represents a consistent combination of network ID and metadata value of an item. It
+ * cannot usually be changed unless a new item is obtained.
+ */
 public enum ItemDescriptorType {
     INVALID("empty"),
     DEFAULT("name"),
     MOLANG("molang"),
     ITEM_TAG("item_tag"),
-    @Deprecated DEFERRED("DEFERRED_DEPRECATED"),
-    @Deprecated COMPLEX_ALIAS("COMPLEX_ALIAS_DEPRECATED");
+    /**
+     * @deprecated since v2168
+     */
+    DEFERRED("DEFERRED_DEPRECATED"),
+    /**
+     * @since v575
+     * @deprecated since v2168
+     */
+    COMPLEX_ALIAS("COMPLEX_ALIAS_DEPRECATED");
 
-    private static final Map<String, ItemDescriptorType> SERIALIZE_NAMES = new HashMap<>(values().length, 1);
-    static { for (ItemDescriptorType value : values()) SERIALIZE_NAMES.put(value.serializeName, value); }
+    private final String serializeName;
 
-    @Getter private final String serializeName;
-    ItemDescriptorType(String serializeName) { this.serializeName = serializeName; }
-    public static ItemDescriptorType fromName(String serializeName) { return SERIALIZE_NAMES.get(serializeName); }
+    ItemDescriptorType(String serializeName) {
+        this.serializeName = serializeName;
+    }
+
+    public String getSerializeName() {
+        return serializeName;
+    }
+
+    public static ItemDescriptorType fromName(String name) {
+        for (ItemDescriptorType type : values()) {
+            if (type.serializeName.equals(name)) {
+                return type;
+            }
+        }
+        throw new IllegalArgumentException("Unknown item descriptor type: " + name);
+    }
 }

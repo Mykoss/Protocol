@@ -10,6 +10,7 @@ import static org.cloudburstmc.protocol.bedrock.packet.SetScoreboardIdentityPack
 import static org.cloudburstmc.protocol.bedrock.packet.SetScoreboardIdentityPacket.Entry;
 
 public class SetScoreboardIdentitySerializer_v2168 extends SetScoreboardIdentitySerializer_v291 {
+
     public static final SetScoreboardIdentitySerializer_v2168 INSTANCE = new SetScoreboardIdentitySerializer_v2168();
 
     @Override
@@ -17,8 +18,8 @@ public class SetScoreboardIdentitySerializer_v2168 extends SetScoreboardIdentity
         Action action = packet.getAction();
         buffer.writeByte(action.ordinal());
         helper.writeArray(buffer, packet.getEntries(), (buf, entry) -> {
-            VarInts.writeLong(buffer, entry.getScoreboardId());
-            helper.writeOptional(buffer, o -> action == Action.ADD, entry.getPlayerId(), VarInts::writeLong);
+            VarInts.writeLong(buffer, entry.scoreboardId());
+            helper.writeOptional(buffer, value -> action == Action.ADD, entry.playerId(), VarInts::writeLong);
         });
     }
 
@@ -29,7 +30,9 @@ public class SetScoreboardIdentitySerializer_v2168 extends SetScoreboardIdentity
         helper.readArray(buffer, packet.getEntries(), buf -> {
             long scoreboardId = VarInts.readLong(buffer);
             long playerId = 0;
-            if (buffer.readBoolean()) playerId = VarInts.readLong(buffer);
+            if (buffer.readBoolean()) {
+                playerId = VarInts.readLong(buffer);
+            }
             return new Entry(scoreboardId, playerId);
         });
     }

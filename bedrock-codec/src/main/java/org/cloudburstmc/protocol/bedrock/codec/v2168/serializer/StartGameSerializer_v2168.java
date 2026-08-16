@@ -9,10 +9,13 @@ import org.cloudburstmc.protocol.bedrock.util.OptionalBoolean;
 import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 public class StartGameSerializer_v2168 extends StartGameSerializer_v944 {
+
     public static final StartGameSerializer_v2168 INSTANCE = new StartGameSerializer_v2168();
+
 
     @Override
     protected void writeLevelSettings(ByteBuf buffer, BedrockCodecHelper helper, StartGamePacket packet) {
+        //v924
         writeSeed(buffer, packet.getSeed());
         buffer.writeShortLE(packet.getSpawnBiomeType().ordinal());
         helper.writeString(buffer, packet.getCustomBiomeName());
@@ -27,7 +30,7 @@ public class StartGameSerializer_v2168 extends StartGameSerializer_v944 {
         buffer.writeBoolean(packet.isCreatedInEditor());
         buffer.writeBoolean(packet.isExportedFromEditor());
         VarInts.writeInt(buffer, packet.getDayCycleStopTime());
-        VarInts.writeUnsignedInt(buffer, packet.getEduEditionOffers());
+        VarInts.writeUnsignedInt(buffer, packet.getEduEditionOffers()); // unsigned
         buffer.writeBoolean(packet.isEduFeaturesEnabled());
         helper.writeString(buffer, packet.getEducationProductionId());
         buffer.writeFloatLE(packet.getRainLevel());
@@ -44,7 +47,7 @@ public class StartGameSerializer_v2168 extends StartGameSerializer_v944 {
         buffer.writeBoolean(packet.isExperimentsPreviouslyToggled());
         buffer.writeBoolean(packet.isBonusChestEnabled());
         buffer.writeBoolean(packet.isStartingWithMap());
-        buffer.writeByte(packet.getDefaultPlayerPermission().ordinal());
+        buffer.writeByte(packet.getDefaultPlayerPermission().ordinal()); // byte
         buffer.writeIntLE(packet.getServerChunkTickRange());
         buffer.writeBoolean(packet.isBehaviorPackLocked());
         buffer.writeBoolean(packet.isResourcePackLocked());
@@ -60,18 +63,20 @@ public class StartGameSerializer_v2168 extends StartGameSerializer_v944 {
         buffer.writeIntLE(packet.getLimitedWorldWidth());
         buffer.writeIntLE(packet.getLimitedWorldHeight());
         buffer.writeBoolean(packet.isNetherType());
-        helper.writeString(buffer, packet.getEduSharedUriResource().getButtonName());
-        helper.writeString(buffer, packet.getEduSharedUriResource().getLinkUri());
+        helper.writeString(buffer, packet.getEduSharedUriResource().buttonName());
+        helper.writeString(buffer, packet.getEduSharedUriResource().linkUri());
         helper.writeOptional(buffer, OptionalBoolean::isPresent, packet.getForceExperimentalGameplay(),
                 (buf, optional) -> buf.writeBoolean(optional.getAsBoolean()));
         buffer.writeByte(packet.getChatRestrictionLevel().ordinal());
         buffer.writeBoolean(packet.isDisablingPlayerInteractions());
+        //v1001
         VarInts.writeInt(buffer, packet.getServerEditorConnectionPolicy());
         buffer.writeBoolean(packet.isAllowAnonymousBlockDropsInEditorWorlds());
     }
 
     @Override
     protected void readLevelSettings(ByteBuf buffer, BedrockCodecHelper helper, StartGamePacket packet) {
+        //v924
         packet.setSeed(readSeed(buffer));
         packet.setSpawnBiomeType(SpawnBiomeType.byId(buffer.readShortLE()));
         packet.setCustomBiomeName(helper.readString(buffer));
@@ -86,7 +91,7 @@ public class StartGameSerializer_v2168 extends StartGameSerializer_v944 {
         packet.setCreatedInEditor(buffer.readBoolean());
         packet.setExportedFromEditor(buffer.readBoolean());
         packet.setDayCycleStopTime(VarInts.readInt(buffer));
-        packet.setEduEditionOffers(VarInts.readUnsignedInt(buffer));
+        packet.setEduEditionOffers(VarInts.readUnsignedInt(buffer)); // unsigned
         packet.setEduFeaturesEnabled(buffer.readBoolean());
         packet.setEducationProductionId(helper.readString(buffer));
         packet.setRainLevel(buffer.readFloatLE());
@@ -103,7 +108,7 @@ public class StartGameSerializer_v2168 extends StartGameSerializer_v944 {
         packet.setExperimentsPreviouslyToggled(buffer.readBoolean());
         packet.setBonusChestEnabled(buffer.readBoolean());
         packet.setStartingWithMap(buffer.readBoolean());
-        packet.setDefaultPlayerPermission(PLAYER_PERMISSIONS[buffer.readByte()]);
+        packet.setDefaultPlayerPermission(PLAYER_PERMISSIONS[buffer.readByte()]); // byte
         packet.setServerChunkTickRange(buffer.readIntLE());
         packet.setBehaviorPackLocked(buffer.readBoolean());
         packet.setResourcePackLocked(buffer.readBoolean());
@@ -123,6 +128,7 @@ public class StartGameSerializer_v2168 extends StartGameSerializer_v944 {
         packet.setForceExperimentalGameplay(helper.readOptional(buffer, OptionalBoolean.empty(), buf -> OptionalBoolean.of(buf.readBoolean())));
         packet.setChatRestrictionLevel(ChatRestrictionLevel.values()[buffer.readByte()]);
         packet.setDisablingPlayerInteractions(buffer.readBoolean());
+        //v1001
         packet.setServerEditorConnectionPolicy(VarInts.readInt(buffer));
         packet.setAllowAnonymousBlockDropsInEditorWorlds(buffer.readBoolean());
     }
@@ -130,10 +136,12 @@ public class StartGameSerializer_v2168 extends StartGameSerializer_v944 {
     @Override
     protected void readBeforeNetworkPermissions(ByteBuf buffer, BedrockCodecHelper helper, StartGamePacket packet) {
         packet.setNetworkPermissions(this.readNetworkPermissions(buffer, helper));
+        // isLoggingChat removed
     }
 
     @Override
     protected void writeBeforeNetworkPermissions(ByteBuf buffer, BedrockCodecHelper helper, StartGamePacket packet) {
         this.writeNetworkPermissions(buffer, helper, packet.getNetworkPermissions());
+        // isLoggingChat removed
     }
 }

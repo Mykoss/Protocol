@@ -29,14 +29,17 @@ public class MoveEntityDeltaPacket implements BedrockPacket {
     /**
      * The new absolute X position, if {@link Flag#HAS_X} is present.
      */
+    @Deprecated
     private int deltaX;
     /**
      * The new absolute Y position, if {@link Flag#HAS_Y} is present.
      */
+    @Deprecated
     private int deltaY;
     /**
      * The new absolute Z position, if {@link Flag#HAS_Z} is present.
      */
+    @Deprecated
     private int deltaZ;
     /**
      * The new pitch, if {@link Flag#HAS_PITCH} is present.
@@ -50,11 +53,6 @@ public class MoveEntityDeltaPacket implements BedrockPacket {
      * The new head yaw, if {@link Flag#HAS_HEAD_YAW} is present.
      */
     private float headYaw;
-
-    private boolean onGround;
-    private boolean forceMove;
-    private boolean forceMoveLocalEntity;
-    private boolean forceCompletion;
     /**
      * The new absolute X position for newer protocol versions.
      *
@@ -73,6 +71,31 @@ public class MoveEntityDeltaPacket implements BedrockPacket {
      * @since v419
      */
     private float z;
+
+    /**
+     * Whether the entity should be considered on the ground after this update.
+     *
+     * @since v2168
+     */
+    private boolean onGround;
+    /**
+     * Whether the client should snap the entity to its new position without interpolation.
+     *
+     * @since v2168
+     */
+    private boolean forceMove;
+    /**
+     * Whether the client should also force-move a locally controlled entity despite prediction.
+     *
+     * @since v2168
+     */
+    private boolean forceMoveLocalEntity;
+    /**
+     * Whether the client should complete pending local movement before applying this update.
+     *
+     * @since v2168
+     */
+    private boolean forceCompletion;
 
     @Override
     public final PacketSignal handle(BedrockPacketHandler handler) {
@@ -106,7 +129,15 @@ public class MoveEntityDeltaPacket implements BedrockPacket {
                + yaw
                + ", "
                + headYaw
-               + "))";
+               + "), onGround="
+               + onGround
+               + ", forceMove="
+               + forceMove
+               + ", forceMoveLocalEntity="
+               + forceMoveLocalEntity
+               + ", forceCompletion="
+               + forceCompletion
+               + ")";
     }
 
     public enum Flag {
@@ -145,8 +176,7 @@ public class MoveEntityDeltaPacket implements BedrockPacket {
         /**
          * The local entity should be force-moved even if client prediction disagrees.
          */
-        FORCE_MOVE_LOCAL_ENTITY,
-        FORCE_COMPLETION
+        FORCE_MOVE_LOCAL_ENTITY
     }
 
     @Override

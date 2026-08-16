@@ -1,7 +1,7 @@
 package org.cloudburstmc.protocol.bedrock.packet;
 
-import it.unimi.dsi.fastutil.longs.LongArrayList;
 import it.unimi.dsi.fastutil.longs.LongList;
+import it.unimi.dsi.fastutil.longs.LongArrayList;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -86,27 +86,6 @@ public class ClientboundMapItemDataPacket implements BedrockPacket {
      * @since v544
      */
     private Vector3i origin;
-
-    public void setTrackedEntityIds(LongList trackedEntityIds) {
-        this.trackedEntityIds.clear();
-        if (trackedEntityIds != null) {
-            this.trackedEntityIds.addAll(trackedEntityIds);
-        }
-    }
-
-    public void setTrackedObjects(List<MapTrackedObject> trackedObjects) {
-        this.trackedObjects.clear();
-        if (trackedObjects != null) {
-            this.trackedObjects.addAll(trackedObjects);
-        }
-    }
-
-    public void setDecorations(List<MapDecoration> decorations) {
-        this.decorations.clear();
-        if (decorations != null) {
-            this.decorations.addAll(decorations);
-        }
-    }
 
     @Override
     public final PacketSignal handle(BedrockPacketHandler handler) {

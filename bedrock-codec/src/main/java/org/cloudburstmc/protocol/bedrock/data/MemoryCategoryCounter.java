@@ -144,45 +144,5 @@ public record MemoryCategoryCounter(Category category, long currentBytes) {
          * @since v975
          */
         RENDERING_RENDER_REGISTRY,
-        /** @since v2168 */
-        BLOBS,
-        /** @since v2168 */
-        ORE_UI_CLIENT,
-        /** @since v2168 */
-        PERSONA_PIECES,
-        /** @since v2168 */
-        PERSONA_ANIMATIONS,
-        /** @since v2168 */
-        PERSONA_TEXTURES,
-        /** @since v2168 */
-        PERSONA_CHARACTERS,
-        /** @since v2168 */
-        PERSONA_SKIN_PACKS,
-        /** @since v2168 */
-        PERSONA_REPO,
-        /** @since v2168 */
-        RENDERING_BGFX_INIT,
-        /** @since v2168 */
-        RENDERING_BGFX_START_FRAME,
-        /** @since v2168 */
-        RENDERING_BLOCK_TESSELLATOR,
-        /** @since v2168 */
-        RENDERING_END_FRAME,
-        /** @since v2168 */
-        RENDERING_GRAPHICS_TASKS_INIT,
-        /** @since v2168 */
-        RENDERING_POLYGON_OPERATOR_POOL,
-        /** @since v2168 */
-        RENDERING_PBR_TEXTURE_DATA,
-        /** @since v2168 */
-        RENDERING_SETUP,
-        /** @since v2168 */
-        RENDERING_VERTICES,
-        /** @since v2168 */
-        TEST_LOAD_TEST_TAGS,
-        /** @since v2168 */
-        GAMEFACE_SCRIPT,
-        /** @since v2168 */
-        GAMEFACE_LAYOUT,
     }
 }

@@ -20,14 +20,6 @@ public record RecipeUnlockingRequirement(UnlockingContext context, List<ItemDesc
         this(context, new ObjectArrayList<>());
     }
 
-    public UnlockingContext getContext() {
-        return context;
-    }
-
-    public List<ItemDescriptorWithCount> getIngredients() {
-        return ingredients;
-    }
-
     public boolean isInvalid() {
         return ingredients.isEmpty() && context == UnlockingContext.NONE;
     }

@@ -18,10 +18,12 @@ public class MovePlayerSerializer_v2168 extends MovePlayerSerializer_v419 {
         buffer.writeByte(packet.getMode().ordinal());
         buffer.writeBoolean(packet.isOnGround());
         VarInts.writeUnsignedLong(buffer, packet.getRidingRuntimeEntityId());
-        helper.writeOptional(buffer, pk -> pk.getMode() == MovePlayerPacket.Mode.TELEPORT, packet, (buf, pk) -> {
-            buf.writeIntLE(pk.getTeleportationCause().ordinal());
-            buf.writeIntLE(pk.getEntityType());
+
+        helper.writeOptional(buffer, value -> value.getMode() == MovePlayerPacket.Mode.TELEPORT, packet, (buf, value) -> {
+            buf.writeIntLE(value.getTeleportationCause().ordinal());
+            buf.writeIntLE(value.getEntityType());
         });
+
         VarInts.writeUnsignedLong(buffer, packet.getTick());
     }
 
@@ -33,10 +35,12 @@ public class MovePlayerSerializer_v2168 extends MovePlayerSerializer_v419 {
         packet.setMode(MovePlayerPacket.Mode.values()[buffer.readUnsignedByte()]);
         packet.setOnGround(buffer.readBoolean());
         packet.setRidingRuntimeEntityId(VarInts.readUnsignedLong(buffer));
+
         if (buffer.readBoolean()) {
             packet.setTeleportationCause(MovePlayerPacket.TeleportationCause.byId(buffer.readIntLE()));
             packet.setEntityType(buffer.readIntLE());
         }
+
         packet.setTick(VarInts.readUnsignedLong(buffer));
     }
 }

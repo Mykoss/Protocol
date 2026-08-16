@@ -7,6 +7,7 @@ import org.cloudburstmc.protocol.bedrock.packet.PlayerUpdateEntityOverridesPacke
 import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 public class PlayerUpdateEntityOverridesSerializer_v2168 extends PlayerUpdateEntityOverridesSerializer_v786 {
+
     public static final PlayerUpdateEntityOverridesSerializer_v2168 INSTANCE = new PlayerUpdateEntityOverridesSerializer_v2168();
 
     @Override
@@ -15,9 +16,9 @@ public class PlayerUpdateEntityOverridesSerializer_v2168 extends PlayerUpdateEnt
         VarInts.writeUnsignedInt(buffer, packet.getPropertyIndex());
         VarInts.writeUnsignedInt(buffer, packet.getUpdateType().ordinal());
         buffer.writeByte(packet.getUpdateType().ordinal());
-        if (packet.getUpdateType() == PlayerUpdateEntityOverridesPacket.UpdateType.SET_INT_OVERRIDE) {
+        if (packet.getUpdateType().equals(PlayerUpdateEntityOverridesPacket.UpdateType.SET_INT_OVERRIDE)) {
             buffer.writeIntLE(packet.getIntValue());
-        } else if (packet.getUpdateType() == PlayerUpdateEntityOverridesPacket.UpdateType.SET_FLOAT_OVERRIDE) {
+        } else if (packet.getUpdateType().equals(PlayerUpdateEntityOverridesPacket.UpdateType.SET_FLOAT_OVERRIDE)) {
             buffer.writeFloatLE(packet.getFloatValue());
         }
     }
@@ -26,14 +27,16 @@ public class PlayerUpdateEntityOverridesSerializer_v2168 extends PlayerUpdateEnt
     public void deserialize(ByteBuf buffer, BedrockCodecHelper helper, PlayerUpdateEntityOverridesPacket packet) {
         packet.setEntityUniqueId(VarInts.readLong(buffer));
         packet.setPropertyIndex(VarInts.readUnsignedInt(buffer));
+
         int type = VarInts.readUnsignedInt(buffer);
         if (type != buffer.readUnsignedByte()) {
             throw new IllegalStateException("type != legacy type");
         }
+
         packet.setUpdateType(PlayerUpdateEntityOverridesPacket.UpdateType.values()[type]);
-        if (packet.getUpdateType() == PlayerUpdateEntityOverridesPacket.UpdateType.SET_INT_OVERRIDE) {
+        if (packet.getUpdateType().equals(PlayerUpdateEntityOverridesPacket.UpdateType.SET_INT_OVERRIDE)) {
             packet.setIntValue(buffer.readIntLE());
-        } else if (packet.getUpdateType() == PlayerUpdateEntityOverridesPacket.UpdateType.SET_FLOAT_OVERRIDE) {
+        } else if (packet.getUpdateType().equals(PlayerUpdateEntityOverridesPacket.UpdateType.SET_FLOAT_OVERRIDE)) {
             packet.setFloatValue(buffer.readFloatLE());
         }
     }

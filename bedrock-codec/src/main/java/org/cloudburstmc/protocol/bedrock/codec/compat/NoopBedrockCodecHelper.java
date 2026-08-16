@@ -180,12 +180,12 @@ public class NoopBedrockCodecHelper extends BaseBedrockCodecHelper {
     }
 
     @Override
-    public void writeGatheringsConfiguration(ByteBuf buffer, BedrockCodecHelper helper, GatheringsConfigurationJoinInfo info) {
+    public void writeGatheringsConfiguration(ByteBuf byteBuf, BedrockCodecHelper bedrockCodecHelper, GatheringsConfigurationJoinInfo gatheringsConfigurationJoinInfo) {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public GatheringsConfigurationJoinInfo readGatheringsConfiguration(ByteBuf buffer, BedrockCodecHelper helper) {
+    public GatheringsConfigurationJoinInfo readGatheringsConfiguration(ByteBuf byteBuf, BedrockCodecHelper bedrockCodecHelper) {
         throw new UnsupportedOperationException();
     }
 }

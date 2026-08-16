@@ -20,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class ItemStackResponseSerializer_v2168Test {
 
     @Test
-    void rejectedResponseAcceptsLegacyNullContainers() {
+    void rejectedResponseWithNullContainersEncodesAsEmpty() {
         var helper = Bedrock_v2168.CODEC.createHelper();
         var packet = new ItemStackResponsePacket();
         packet.getEntries().add(new ItemStackResponse(
@@ -32,14 +32,15 @@ class ItemStackResponseSerializer_v2168Test {
 
         ItemStackResponseSerializer_v2168.INSTANCE.serialize(buffer, helper, packet);
 
+        // status=ERROR(1), requestId=varint(-5→9), presence=true, hasContainers=false
         assertEquals("0101090100", ByteBufUtil.hexDump(buffer));
 
         var decoded = new ItemStackResponsePacket();
         ItemStackResponseSerializer_v2168.INSTANCE.deserialize(buffer, helper, decoded);
 
-        assertEquals(ItemStackResponseStatus.ERROR, decoded.getEntries().getFirst().getResult());
-        assertEquals(-5, decoded.getEntries().getFirst().getRequestId());
-        assertEquals(List.of(), decoded.getEntries().getFirst().getContainers());
+        assertEquals(ItemStackResponseStatus.ERROR, decoded.getEntries().getFirst().result());
+        assertEquals(-5, decoded.getEntries().getFirst().requestId());
+        assertEquals(List.of(), decoded.getEntries().getFirst().containers());
         assertEquals(0, buffer.readableBytes());
     }
 

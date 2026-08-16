@@ -78,6 +78,9 @@ public enum PlayerActionType {
      * @since v748
      */
     START_USING_ITEM,
+    /**
+     * @since v2168
+     */
     INTERNAL_UPDATE,
     COUNT
 }

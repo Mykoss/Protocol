@@ -30,9 +30,8 @@ public class PlayerListPacket implements BedrockPacket {
     /**
      * The action to execute upon the player list. The entries that follow specify which entries are
      * added or removed from the player list.
-     */
-    /**
-     * @deprecated since v2168, action is encoded per entry.
+     *
+     * @deprecated since v2168, now in Entry
      */
     private Action action;
 
@@ -61,7 +60,9 @@ public class PlayerListPacket implements BedrockPacket {
     @EqualsAndHashCode(doNotUseGetters = true)
     public static final class Entry {
         /**
-         * Entry action used by protocol v2168 and newer.
+         * The action to apply to this entry in v2168 and newer.
+         *
+         * @since v2168
          */
         private Action action;
         /**
@@ -110,6 +111,8 @@ public class PlayerListPacket implements BedrockPacket {
          * Whether the skin attached to this entry is trusted.
          *
          * @since v390
+         *
+         * @deprecated since v2168, now in SerializedSkin
          */
         private boolean trustedSkin;
         /**

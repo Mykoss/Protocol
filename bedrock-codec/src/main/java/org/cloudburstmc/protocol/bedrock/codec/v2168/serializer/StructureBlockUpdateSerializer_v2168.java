@@ -10,6 +10,7 @@ import org.cloudburstmc.protocol.bedrock.data.structure.StructureSettings;
 import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 public class StructureBlockUpdateSerializer_v2168 extends StructureBlockUpdateSerializer_v776 {
+
     public static final StructureBlockUpdateSerializer_v2168 INSTANCE = new StructureBlockUpdateSerializer_v2168();
 
     @Override
@@ -22,7 +23,8 @@ public class StructureBlockUpdateSerializer_v2168 extends StructureBlockUpdateSe
         StructureBlockType type = StructureBlockType.from(VarInts.readInt(buffer));
         StructureSettings settings = helper.readStructureSettings(buffer);
         StructureRedstoneSaveMode redstoneSaveMode = StructureRedstoneSaveMode.from(buffer.readUnsignedByte());
-        return new StructureEditorData(name, filteredName, dataField, includingPlayers, boundingBoxVisible, type, settings, redstoneSaveMode);
+        return new StructureEditorData(name, includingPlayers, boundingBoxVisible, type, settings, dataField,
+                redstoneSaveMode, filteredName);
     }
 
     @Override
@@ -30,8 +32,8 @@ public class StructureBlockUpdateSerializer_v2168 extends StructureBlockUpdateSe
         helper.writeString(buffer, data.name());
         helper.writeString(buffer, data.filteredName());
         helper.writeString(buffer, data.dataField());
-        buffer.writeBoolean(data.isIncludingPlayers());
-        buffer.writeBoolean(data.isBoundingBoxVisible());
+        buffer.writeBoolean(data.includingPlayers());
+        buffer.writeBoolean(data.boundingBoxVisible());
         VarInts.writeInt(buffer, data.type().ordinal());
         helper.writeStructureSettings(buffer, data.settings());
         buffer.writeByte(data.redstoneSaveMode().ordinal());

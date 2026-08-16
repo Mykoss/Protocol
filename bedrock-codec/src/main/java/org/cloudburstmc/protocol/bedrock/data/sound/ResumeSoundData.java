@@ -1,8 +1,9 @@
 package org.cloudburstmc.protocol.bedrock.data.sound;
 
-import lombok.Value;
-
-@Value
-public class ResumeSoundData {
-
+/**
+ * Requests that a paused server-controlled sound resume its playback.
+ *
+ * @since v2168
+ */
+public record ResumeSoundData() {
 }

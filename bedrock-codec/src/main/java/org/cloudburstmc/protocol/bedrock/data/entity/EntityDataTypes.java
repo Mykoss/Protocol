@@ -261,6 +261,7 @@ public class EntityDataTypes {
     public static final EntityDataType<Long> ARROW_SHOOTER_ID = new EntityDataType<>(Long.class, "ARROW_SHOOTER_ID");
     public static final EntityDataType<Long> FIREWORK_SHOOTER_ID = new EntityDataType<>(Long.class, "FIREWORK_SHOOTER_ID");
     public static final EntityDataType<Vector3f> FIREWORK_DIRECTION = new EntityDataType<>(Vector3f.class, "FIREWORK_DIRECTION");
+    public static final EntityDataType<Integer> UNKNOWN_HORSE_INT_25 = new EntityDataType<>(Integer.class, "UNKNOWN_HORSE_INT_25");
     /**
      * @since v503
      */
@@ -329,6 +330,4 @@ public class EntityDataTypes {
      * @since v975
      */
     public static final EntityDataType<Float> NAMEPLATE_RENDER_DISTANCE_MAX = new EntityDataType<>(Float.class, "NAMEPLATE_RENDER_DISTANCE_MAX");
-    /** @since v2168 */
-    public static final EntityDataType<Integer> UNKNOWN_HORSE_INT_25 = new EntityDataType<>(Integer.class, "UNKNOWN_HORSE_INT_25");
 }

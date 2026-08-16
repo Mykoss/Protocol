@@ -20,6 +20,7 @@ import java.util.UUID;
 import static org.cloudburstmc.protocol.bedrock.data.inventory.crafting.CraftingDataType.*;
 
 public class CraftingDataSerializer_v2168 extends CraftingDataSerializer_v748 {
+
     public static final CraftingDataSerializer_v2168 INSTANCE = new CraftingDataSerializer_v2168();
 
     @Override
@@ -40,13 +41,13 @@ public class CraftingDataSerializer_v2168 extends CraftingDataSerializer_v748 {
 
     @Override
     public void deserialize(ByteBuf buffer, BedrockCodecHelper helper, CraftingDataPacket packet) {
-        helper.readArray(buffer, packet.getShapedData(), (buf, h) -> readShapedRecipe(buf, h, SHAPED));
-        helper.readArray(buffer, packet.getShapelessData(), (buf, h) -> readShapelessRecipe(buf, h, SHAPELESS));
-        helper.readArray(buffer, packet.getMultiData(), (buf, h) -> readMultiRecipe(buf, h, MULTI));
-        helper.readArray(buffer, packet.getShapelessUserData(), (buf, h) -> readShapelessRecipe(buf, h, SHULKER_BOX));
-        helper.readArray(buffer, packet.getShapelessChemistryData(), (buf, h) -> readShapelessRecipe(buf, h, SHAPELESS_CHEMISTRY));
-        helper.readArray(buffer, packet.getShapedChemistryData(), (buf, h) -> readShapedRecipe(buf, h, SHAPED_CHEMISTRY));
-        helper.readArray(buffer, packet.getSmithingTransformData(), (buf, h) -> readSmithingTransformRecipe(buf, h, SMITHING_TRANSFORM));
+        helper.readArray(buffer, packet.getShapedData(),  (buf, h) -> readShapedRecipe(buf, h, SHAPED));
+        helper.readArray(buffer, packet.getShapelessData(),  (buf, h) -> readShapelessRecipe(buf, h, SHAPELESS));
+        helper.readArray(buffer, packet.getMultiData(),  (buf, h) -> readMultiRecipe(buf, h, MULTI));
+        helper.readArray(buffer, packet.getShapelessUserData(),  (buf, h) -> readShapelessRecipe(buf, h, SHULKER_BOX));
+        helper.readArray(buffer, packet.getShapelessChemistryData(),  (buf, h) -> readShapelessRecipe(buf, h, SHAPELESS_CHEMISTRY));
+        helper.readArray(buffer, packet.getShapedChemistryData(),  (buf, h) -> readShapedRecipe(buf, h, SHAPED_CHEMISTRY));
+        helper.readArray(buffer, packet.getSmithingTransformData(),  (buf, h) -> readSmithingTransformRecipe(buf, h, SMITHING_TRANSFORM));
         helper.readArray(buffer, packet.getSmithingTrimData(), (buf, h) -> readSmithingTrimRecipe(buf, h, SMITHING_TRIM));
         helper.readArray(buffer, packet.getPotionMixData(), this::readPotionMixData);
         helper.readArray(buffer, packet.getContainerMixData(), this::readContainerMixData);
@@ -56,7 +57,7 @@ public class CraftingDataSerializer_v2168 extends CraftingDataSerializer_v748 {
 
     @Override
     protected RecipeUnlockingRequirement readRequirement(ByteBuf buffer, BedrockCodecHelper helper, CraftingDataType type) {
-        RecipeUnlockingRequirement requirement = new RecipeUnlockingRequirement(RecipeUnlockingRequirement.UnlockingContext.from(VarInts.readInt(buffer)));
+        RecipeUnlockingRequirement requirement = new RecipeUnlockingRequirement(RecipeUnlockingRequirement.UnlockingContext.from(VarInts.readInt(buffer))); // docs said signed? but is unsigned?
         if (buffer.readBoolean()) {
             helper.readArray(buffer, requirement.ingredients(), (buf, h) -> h.readIngredient(buf));
         }
@@ -65,9 +66,10 @@ public class CraftingDataSerializer_v2168 extends CraftingDataSerializer_v748 {
 
     @Override
     protected void writeRequirement(ByteBuf buffer, BedrockCodecHelper helper, CraftingRecipeData data) {
-        VarInts.writeInt(buffer, data.getRequirement().getContext().ordinal());
+        VarInts.writeInt(buffer, data.getRequirement().context().ordinal());
         helper.writeOptional(buffer, requirement -> requirement.context().equals(RecipeUnlockingRequirement.UnlockingContext.NONE),
-                data.getRequirement(), (bb, hh, rr) -> hh.writeArray(bb, rr.getIngredients(), (buf, h, ingredient) -> h.writeIngredient(buf, ingredient)));
+                data.getRequirement(), (buf, h, requirement) -> h.writeArray(buf, requirement.ingredients(),
+                        (ingredientBuffer, ingredientHelper, ingredient) -> ingredientHelper.writeIngredient(ingredientBuffer, ingredient)));
     }
 
     @Override
@@ -77,15 +79,21 @@ public class CraftingDataSerializer_v2168 extends CraftingDataSerializer_v748 {
         int height = VarInts.readInt(buffer);
         List<ItemDescriptorWithCount> inputs = new ObjectArrayList<>();
         helper.readArray(buffer, inputs, helper::readIngredient);
-        if (inputs.size() != width * height) throw new IllegalStateException(inputs.size() + "!=" + (width * height));
+        if (inputs.size() != width * height) {
+            throw new IllegalStateException(inputs.size() + "!=" + (width * height));
+        }
         List<ItemData> outputs = new ObjectArrayList<>();
         helper.readArray(buffer, outputs, helper::readItemInstance);
         UUID uuid = helper.readUuid(buffer);
         String craftingTag = helper.readString(buffer);
         int priority = VarInts.readInt(buffer);
         boolean assumeSymmetry = buffer.readBoolean();
+
         RecipeUnlockingRequirement requirement = RecipeUnlockingRequirement.INVALID;
-        if (buffer.readBoolean()) requirement = this.readRequirement(buffer, helper, type);
+        if (buffer.readBoolean()) {
+            requirement = this.readRequirement(buffer, helper, type);
+        }
+
         int networkId = VarInts.readUnsignedInt(buffer);
         return ShapedRecipeData.of(type, recipeId, width, height, inputs, outputs, uuid, craftingTag, priority, networkId, assumeSymmetry, requirement);
     }
@@ -101,8 +109,12 @@ public class CraftingDataSerializer_v2168 extends CraftingDataSerializer_v748 {
         helper.writeString(buffer, data.getTag());
         VarInts.writeInt(buffer, data.getPriority());
         buffer.writeBoolean(data.isAssumeSymetry());
+
         buffer.writeBoolean(data.getType() == CraftingDataType.SHAPED);
-        if (data.getType() == CraftingDataType.SHAPED) this.writeRequirement(buffer, helper, data);
+        if (data.getType() == CraftingDataType.SHAPED) {
+            this.writeRequirement(buffer, helper, data);
+        }
+
         VarInts.writeUnsignedInt(buffer, data.getNetId());
     }
 
@@ -111,13 +123,19 @@ public class CraftingDataSerializer_v2168 extends CraftingDataSerializer_v748 {
         String recipeId = helper.readString(buffer);
         List<ItemDescriptorWithCount> inputs = new ObjectArrayList<>();
         helper.readArray(buffer, inputs, helper::readIngredient);
+
         List<ItemData> outputs = new ObjectArrayList<>();
         helper.readArray(buffer, outputs, helper::readItemInstance);
+
         UUID uuid = helper.readUuid(buffer);
         String craftingTag = helper.readString(buffer);
         int priority = VarInts.readInt(buffer);
+
         RecipeUnlockingRequirement requirement = RecipeUnlockingRequirement.INVALID;
-        if (buffer.readBoolean()) requirement = this.readRequirement(buffer, helper, type);
+        if (buffer.readBoolean()) {
+            requirement = this.readRequirement(buffer, helper, type);
+        }
+
         int networkId = VarInts.readUnsignedInt(buffer);
         return ShapelessRecipeData.of(type, recipeId, inputs, outputs, uuid, craftingTag, priority, networkId, requirement);
     }
@@ -127,12 +145,16 @@ public class CraftingDataSerializer_v2168 extends CraftingDataSerializer_v748 {
         helper.writeString(buffer, data.getId());
         helper.writeArray(buffer, data.getIngredients(), helper::writeIngredient);
         helper.writeArray(buffer, data.getResults(), helper::writeItemInstance);
+
         helper.writeUuid(buffer, data.getUuid());
         helper.writeString(buffer, data.getTag());
         VarInts.writeInt(buffer, data.getPriority());
-        boolean hasRequirement = data.getType() == CraftingDataType.SHAPELESS || data.getType() == CraftingDataType.SHULKER_BOX;
-        buffer.writeBoolean(hasRequirement);
-        if (hasRequirement) this.writeRequirement(buffer, helper, data);
+
+        buffer.writeBoolean(data.getType() == CraftingDataType.SHAPELESS || data.getType() == CraftingDataType.SHULKER_BOX);
+        if (data.getType() == CraftingDataType.SHAPELESS || data.getType() == CraftingDataType.SHULKER_BOX) {
+            this.writeRequirement(buffer, helper, data);
+        }
+
         VarInts.writeUnsignedInt(buffer, data.getNetId());
     }
 }
