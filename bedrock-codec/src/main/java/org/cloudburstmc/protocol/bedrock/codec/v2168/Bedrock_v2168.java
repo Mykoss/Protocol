@@ -80,7 +80,7 @@ public class Bedrock_v2168 extends Bedrock_v1001 {
     public static final BedrockCodec CODEC = Bedrock_v1001.CODEC.toBuilder()
             .protocolVersion(2168)
             .minecraftVersion("1.26.40")
-            .helper(() -> new BedrockCodecHelper_v2168(ENTITY_DATA, GAME_RULE_TYPES, ITEM_STACK_REQUEST_TYPES, CONTAINER_SLOT_TYPES, PLAYER_ABILITIES, TEXT_PROCESSING_ORIGINS))
+            .helper(() -> new BedrockCodecHelper_v2168Compat(ENTITY_DATA, GAME_RULE_TYPES, ITEM_STACK_REQUEST_TYPES, CONTAINER_SLOT_TYPES, PLAYER_ABILITIES, TEXT_PROCESSING_ORIGINS))
             .updateSerializer(AnvilDamagePacket.class, AnvilDamageSerializer_v2168.INSTANCE)
             .updateSerializer(ClientboundMapItemDataPacket.class, ClientboundMapItemDataSerializer_v2168.INSTANCE)
             .updateSerializer(ClientboundUpdateSoundDataPacket.class, ClientboundUpdateSoundDataSerializer_v2168.INSTANCE)
