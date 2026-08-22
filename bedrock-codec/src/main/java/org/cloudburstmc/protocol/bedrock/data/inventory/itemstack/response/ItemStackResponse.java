@@ -26,7 +26,7 @@ public record ItemStackResponse(boolean success, ItemStackResponseStatus result,
     }
 
     public ItemStackResponse(ItemStackResponseStatus result, int requestId, List<ItemStackResponseContainer> containers) {
-        this(false, result, requestId, containers);
+        this(result == ItemStackResponseStatus.OK, result, requestId, containers);
     }
 
 }
