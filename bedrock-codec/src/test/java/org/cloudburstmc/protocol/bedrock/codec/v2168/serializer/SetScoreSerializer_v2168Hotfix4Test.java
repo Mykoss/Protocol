@@ -5,6 +5,7 @@ import io.netty.buffer.Unpooled;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodec;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
 import org.cloudburstmc.protocol.bedrock.codec.v2168.Bedrock_v2168_hotfix4;
+import org.cloudburstmc.protocol.bedrock.codec.v2168.Bedrock_v2168_hotfix5;
 import org.cloudburstmc.protocol.bedrock.data.ScoreInfo;
 import org.cloudburstmc.protocol.bedrock.packet.SetScorePacket;
 import org.cloudburstmc.protocol.bedrock.util.VarInts;
@@ -26,6 +27,16 @@ class SetScoreSerializer_v2168Hotfix4Test {
         assertEquals("1.26.44", CODEC.getMinecraftVersion());
         assertSame(SetScoreSerializer_v2168_hotfix4.INSTANCE,
                 CODEC.getPacketDefinition(SetScorePacket.class).serializer());
+    }
+
+    @Test
+    void hotfixFiveKeepsTheProtocolAndUpdatedSetScoreSerializer() {
+        var hotfixCodec = Bedrock_v2168_hotfix5.CODEC;
+
+        assertEquals(2168, hotfixCodec.getProtocolVersion());
+        assertEquals("1.26.45", hotfixCodec.getMinecraftVersion());
+        assertSame(SetScoreSerializer_v2168_hotfix4.INSTANCE,
+                hotfixCodec.getPacketDefinition(SetScorePacket.class).serializer());
     }
 
     @Test
