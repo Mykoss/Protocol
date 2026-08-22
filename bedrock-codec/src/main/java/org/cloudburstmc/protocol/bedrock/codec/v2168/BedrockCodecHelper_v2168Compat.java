@@ -71,7 +71,7 @@ public class BedrockCodecHelper_v2168Compat extends BedrockCodecHelper_v2168 {
         List<PersonaPieceTintData> tints = skin.getTintColors();
         VarInts.writeUnsignedInt(buffer, tints.size());
         for (PersonaPieceTintData tint : tints) {
-            this.writeString(buffer, tint.type());
+            this.writeString(buffer, PersonaPieceType.fromName(tint.type()).getSerializeName());
             List<String> colors = tint.colors();
             if (colors.size() != 4) {
                 throw new IllegalArgumentException("Expected 4 colors in PersonaPieceTintData");
