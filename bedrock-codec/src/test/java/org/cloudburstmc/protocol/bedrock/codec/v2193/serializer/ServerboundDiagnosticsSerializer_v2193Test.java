@@ -27,7 +27,7 @@ class ServerboundDiagnosticsSerializer_v2193Test {
         ByteBuf buffer = Unpooled.buffer();
         try {
             var serializer = (ServerboundDiagnosticsSerializer_v2193)
-                    Bedrock_v2193.CODEC.getSerializer(ServerboundDiagnosticsPacket.class);
+                    Bedrock_v2193.CODEC.getPacketDefinition(ServerboundDiagnosticsPacket.class).serializer();
             serializer.serialize(buffer, helper, packet);
 
             var decoded = new ServerboundDiagnosticsPacket();
