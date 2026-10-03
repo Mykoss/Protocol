@@ -15,8 +15,8 @@ public class DimensionDataSerializer_v2193 extends DimensionDataSerializer_v2168
     @Override
     protected void writeDefinition(ByteBuf buffer, BedrockCodecHelper helper, DimensionDefinition definition) {
         helper.writeString(buffer, definition.id());
-        VarInts.writeInt(buffer, definition.maximumHeight());
         VarInts.writeInt(buffer, definition.minimumHeight());
+        VarInts.writeInt(buffer, definition.maximumHeight() - definition.minimumHeight());
         VarInts.writeInt(buffer, definition.generatorType());
         VarInts.writeInt(buffer, definition.dimensionType());
         helper.writeUuid(buffer, definition.packId());
@@ -26,8 +26,8 @@ public class DimensionDataSerializer_v2193 extends DimensionDataSerializer_v2168
     @Override
     protected DimensionDefinition readDefinition(ByteBuf buffer, BedrockCodecHelper helper) {
         String id = helper.readString(buffer);
-        int maximumHeight = VarInts.readInt(buffer);
         int minimumHeight = VarInts.readInt(buffer);
+        int maximumHeight = minimumHeight + VarInts.readInt(buffer);
         int generatorType = VarInts.readInt(buffer);
         int dimensionType = VarInts.readInt(buffer);
         UUID packId = helper.readUuid(buffer);
