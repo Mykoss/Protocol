@@ -20,6 +20,7 @@ import org.cloudburstmc.protocol.bedrock.data.inventory.descriptor.ItemDescripto
 import org.cloudburstmc.protocol.bedrock.data.inventory.itemstack.request.ItemStackRequest;
 import org.cloudburstmc.protocol.bedrock.data.inventory.itemstack.response.ItemStackResponseContainer;
 import org.cloudburstmc.protocol.bedrock.data.inventory.transaction.InventoryActionData;
+import org.cloudburstmc.protocol.bedrock.data.inventory.transaction.InventorySource;
 import org.cloudburstmc.protocol.bedrock.data.skin.SerializedSkin;
 import org.cloudburstmc.protocol.bedrock.data.structure.StructureSettings;
 import org.cloudburstmc.protocol.bedrock.packet.InventoryTransactionPacket;
@@ -213,6 +214,10 @@ public interface BedrockCodecHelper {
     boolean readInventoryActions(ByteBuf buffer, List<InventoryActionData> actions);
 
     void writeInventoryActions(ByteBuf buffer, List<InventoryActionData> actions, boolean hasNetworkIds);
+
+    InventorySource readSource(ByteBuf buffer);
+
+    void writeSource(ByteBuf buffer, InventorySource inventorySource);
 
     void readExperiments(ByteBuf buffer, List<ExperimentData> experiments);
 
