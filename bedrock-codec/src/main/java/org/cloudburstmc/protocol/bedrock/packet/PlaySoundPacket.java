@@ -45,6 +45,18 @@ public class PlaySoundPacket implements BedrockPacket {
      * @since v975
      */
     private Long serverSoundHandle;
+    /**
+     * Bypasses the listener range check.
+     *
+     * @since v2193
+     */
+    private boolean bypassListenerRangeCheck;
+    /**
+     * Optional playback offset in seconds.
+     *
+     * @since v2193
+     */
+    private Float playbackPositionSeconds;
 
     @Override
     public final PacketSignal handle(BedrockPacketHandler handler) {
