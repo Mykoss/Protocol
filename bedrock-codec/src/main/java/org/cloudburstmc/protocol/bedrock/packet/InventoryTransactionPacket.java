@@ -121,6 +121,12 @@ public class InventoryTransactionPacket implements BedrockPacket {
      * @since v944
      */
     private int clientCooldownState;
+    /**
+     * The hand used for the interaction.
+     *
+     * @since v2193
+     */
+    private int hand;
 
     @Override
     public final PacketSignal handle(BedrockPacketHandler handler) {
