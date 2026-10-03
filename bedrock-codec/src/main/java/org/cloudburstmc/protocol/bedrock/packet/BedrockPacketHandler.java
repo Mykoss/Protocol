@@ -15,14 +15,7 @@ public interface BedrockPacketHandler {
      */
     default PacketSignal handlePacket(BedrockPacket packet) {
         return packet.handle(this);
-        default PacketSignal handle(SetPlayerFurnaceOptionsPacket packet) {
-        return PacketSignal.UNHANDLED;
     }
-
-    default PacketSignal handle(RecordStartedPacket packet) {
-        return PacketSignal.UNHANDLED;
-    }
-}
 
     /**
      * Hook invoked when the connection disconnects.
@@ -1039,4 +1032,12 @@ public interface BedrockPacketHandler {
     default PacketSignal handle(PartyDestinationCookieResponsePacket packet) {
         return PacketSignal.UNHANDLED;
     }
+    default PacketSignal handle(SetPlayerFurnaceOptionsPacket packet) {
+        return PacketSignal.UNHANDLED;
+    }
+
+    default PacketSignal handle(RecordStartedPacket packet) {
+        return PacketSignal.UNHANDLED;
+    }
+
 }
