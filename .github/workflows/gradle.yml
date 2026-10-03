@@ -2,7 +2,7 @@ name: Protocol
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "update/mcbe-1.26.52-v2193" ]
     paths:
       - .github/workflows/gradle.yml
       - gradle/**
