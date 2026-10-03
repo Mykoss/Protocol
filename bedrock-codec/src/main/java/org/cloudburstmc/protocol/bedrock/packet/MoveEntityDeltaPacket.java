@@ -96,6 +96,12 @@ public class MoveEntityDeltaPacket implements BedrockPacket {
      * @since v2168
      */
     private boolean forceCompletion;
+    /**
+     * Server movement tick associated with this delta.
+     *
+     * @since v2193
+     */
+    private long ticks;
 
     @Override
     public final PacketSignal handle(BedrockPacketHandler handler) {
