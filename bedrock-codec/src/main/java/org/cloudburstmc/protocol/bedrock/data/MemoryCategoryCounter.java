@@ -144,5 +144,24 @@ public record MemoryCategoryCounter(Category category, long currentBytes) {
          * @since v975
          */
         RENDERING_RENDER_REGISTRY,
+        BLOBS,
+        ORE_UI_CLIENT,
+        PERSONA_PIECES,
+        PERSONA_ANIMATIONS,
+        PERSONA_CHARACTERS,
+        PERSONA_SKIN_PACKS,
+        PERSONA_REPO,
+        RENDERING_BGFX_INIT,
+        RENDERING_BGFX_START_FRAME,
+        RENDERING_BLOCK_TESSELLATOR,
+        RENDERING_END_FRAME,
+        RENDERING_GRAPHICS_TASKS_INIT,
+        RENDERING_POLYGON_OPERATOR_POOL,
+        RENDERING_PBR_TEXTURE_DATA,
+        RENDERING_SETUP,
+        RENDERING_VERTICES,
+        TEST_LOAD_TEST_TAGS,
+        GAMEFACE_SCRIPT,
+        GAMEFACE_LAYOUT,
     }
 }
