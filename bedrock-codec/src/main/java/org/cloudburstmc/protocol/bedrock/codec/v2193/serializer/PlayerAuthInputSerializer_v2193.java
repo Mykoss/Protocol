@@ -123,6 +123,7 @@ public class PlayerAuthInputSerializer_v2193 extends PlayerAuthInputSerializer_v
         helper.writeBlockPosition(buffer, transaction.getBlockPosition());
         buffer.writeByte(transaction.getBlockFace());
         VarInts.writeInt(buffer, transaction.getHotbarSlot());
+        buffer.writeByte(transaction.getHand());
         helper.writeItem(buffer, transaction.getItemInHand());
         helper.writeVector3f(buffer, transaction.getPlayerPosition());
         helper.writeVector3f(buffer, transaction.getClickPosition());
@@ -148,6 +149,7 @@ public class PlayerAuthInputSerializer_v2193 extends PlayerAuthInputSerializer_v
         itemTransaction.setBlockPosition(helper.readBlockPosition(buffer));
         itemTransaction.setBlockFace(buffer.readUnsignedByte());
         itemTransaction.setHotbarSlot(VarInts.readInt(buffer));
+        itemTransaction.setHand(buffer.readUnsignedByte());
         itemTransaction.setItemInHand(helper.readItem(buffer));
         itemTransaction.setPlayerPosition(helper.readVector3f(buffer));
         itemTransaction.setClickPosition(helper.readVector3f(buffer));
