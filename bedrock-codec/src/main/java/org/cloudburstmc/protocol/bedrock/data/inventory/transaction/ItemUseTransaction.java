@@ -47,6 +47,12 @@ public class ItemUseTransaction {
      */
     private int hotbarSlot;
     /**
+     * The hand used for the interaction.
+     *
+     * @since v2193
+     */
+    private int hand;
+    /**
      * The item in hand.
      */
     private ItemData itemInHand;
