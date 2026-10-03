@@ -26,4 +26,9 @@ public record DimensionDefinition(String id, int maximumHeight, int minimumHeigh
                                int dimensionType) {
         this(id, maximumHeight, minimumHeight, generatorType, dimensionType, new UUID(0, 0), null);
     }
+
+    public DimensionDefinition(String id, int maximumHeight, int minimumHeight, int generatorType,
+                               int dimensionType, UUID packId) {
+        this(id, maximumHeight, minimumHeight, generatorType, dimensionType, packId, null);
+    }
 }
