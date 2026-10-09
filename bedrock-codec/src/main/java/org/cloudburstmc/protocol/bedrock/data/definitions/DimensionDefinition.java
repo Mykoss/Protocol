@@ -13,16 +13,22 @@ import java.util.UUID;
  * @param generatorType the generator variant used for the dimension
  * @param dimensionType the numeric dimension type sent by modern codecs
  * @param packId        the owning pack identifier sent by v2168+
+ * @param defaultBiome   the default biome identifier sent by v2193+
  */
 public record DimensionDefinition(String id, int maximumHeight, int minimumHeight, int generatorType,
-                                  int dimensionType, UUID packId) {
+                                  int dimensionType, UUID packId, String defaultBiome) {
 
     public DimensionDefinition(String id, int maximumHeight, int minimumHeight, int generatorType) {
-        this(id, maximumHeight, minimumHeight, generatorType, 0);
+        this(id, maximumHeight, minimumHeight, generatorType, 0, new UUID(0, 0), null);
     }
 
     public DimensionDefinition(String id, int maximumHeight, int minimumHeight, int generatorType,
                                int dimensionType) {
-        this(id, maximumHeight, minimumHeight, generatorType, dimensionType, new UUID(0, 0));
+        this(id, maximumHeight, minimumHeight, generatorType, dimensionType, new UUID(0, 0), null);
+    }
+
+    public DimensionDefinition(String id, int maximumHeight, int minimumHeight, int generatorType,
+                               int dimensionType, UUID packId) {
+        this(id, maximumHeight, minimumHeight, generatorType, dimensionType, packId, null);
     }
 }

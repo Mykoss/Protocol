@@ -51,17 +51,23 @@ public final class PrimitiveText extends PrimitiveShape {
      * @since v975
      */
     private final boolean showTextBackface;
+    /**
+     * Extra vertical spacing between text lines.
+     *
+     * @since v2193
+     */
+    private final float lineGapHeight;
 
     public PrimitiveText(long id, int dimension, @Nullable Vector3f position, @Nullable Float scale,
                          @Nullable Vector3f rotation, @Nullable Float totalTimeLeft, @Nullable Color color,
                          String text) {
-        this(id, dimension, position, scale, rotation, totalTimeLeft, color, text, false, null, false, false, false, null, null);
+        this(id, dimension, position, scale, rotation, totalTimeLeft, color, text, false, null, false, false, false, 0.0f, null, null);
     }
 
     public PrimitiveText(long id, int dimension, @Nullable Vector3f position, @Nullable Float scale,
                          @Nullable Vector3f rotation, @Nullable Float totalTimeLeft, @Nullable Color color,
                          String text, @Nullable Long attachedToEntityId) {
-        this(id, dimension, position, scale, rotation, totalTimeLeft, color, text, false, null, false, false, false, null, attachedToEntityId);
+        this(id, dimension, position, scale, rotation, totalTimeLeft, color, text, false, null, false, false, false, 0.0f, null, attachedToEntityId);
     }
 
     public PrimitiveText(long id, int dimension, @Nullable Vector3f position, @Nullable Float scale,
@@ -69,6 +75,15 @@ public final class PrimitiveText extends PrimitiveShape {
                          String text, boolean useRotation, @Nullable Color backgroundColor, boolean depthTest,
                          boolean showBackface, boolean showTextBackface, @Nullable Float maximumRenderDistance,
                          @Nullable Long attachedToEntityId) {
+        this(id, dimension, position, scale, rotation, totalTimeLeft, color, text, useRotation, backgroundColor,
+                depthTest, showBackface, showTextBackface, 0.0f, maximumRenderDistance, attachedToEntityId);
+    }
+
+    public PrimitiveText(long id, int dimension, @Nullable Vector3f position, @Nullable Float scale,
+                         @Nullable Vector3f rotation, @Nullable Float totalTimeLeft, @Nullable Color color,
+                         String text, boolean useRotation, @Nullable Color backgroundColor, boolean depthTest,
+                         boolean showBackface, boolean showTextBackface, float lineGapHeight,
+                         @Nullable Float maximumRenderDistance, @Nullable Long attachedToEntityId) {
         super(id, dimension, position, scale, rotation, totalTimeLeft, color, maximumRenderDistance, attachedToEntityId);
         this.text = text;
         this.useRotation = useRotation;
@@ -76,6 +91,7 @@ public final class PrimitiveText extends PrimitiveShape {
         this.depthTest = depthTest;
         this.showBackface = showBackface;
         this.showTextBackface = showTextBackface;
+        this.lineGapHeight = lineGapHeight;
     }
 
     @Override
